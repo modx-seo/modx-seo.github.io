@@ -48,9 +48,28 @@
         }
 
         .container {
-            max-width: 600px;
+            max-width: 1200px;
             margin: 0 auto;
             padding: 48px 24px;
+        }
+
+        .header-section {
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .two-column-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 32px;
+            margin-top: 32px;
+        }
+
+        @media (max-width: 768px) {
+            .two-column-grid {
+                grid-template-columns: 1fr;
+                gap: 24px;
+            }
         }
 
         /* Header */
@@ -222,7 +241,7 @@
 
         /* Links Section */
         .links-section {
-            margin-top: 24px;
+            margin-top: 0;
         }
 
         .section-header {
@@ -481,6 +500,7 @@
 </head>
 <body>
     <div class="container">
+        <div class="header-section">
         <!-- Profile Header -->
         <header class="profile">
             <h1 class="username">
@@ -539,10 +559,13 @@
                 </div>
             </div>
         </section>
+        </div>
 
-        <!-- Services -->
+        <!-- Two Column Layout -->
+        <div class="two-column-grid">
         <section class="links-section">
             <div class="section-header">Services</div>
+            <p class="section-intro">My services for your business</p>
 
             <!-- Core Services -->
             <div class="link-card" style="--card-accent: var(--accent-blue);">
@@ -680,6 +703,7 @@
                 </div>
             </div>
         </section>
+        </div>
 
         <!-- Footer -->
         <footer class="footer">
