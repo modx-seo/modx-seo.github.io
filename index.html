@@ -3,7 +3,11 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>@modx_pro — Website Development & SEO</title>
+    
+    <title>MODX Web Development & SEO Services | @modx_pro</title>
+    <meta name="description" content="Professional MODX CMF website development and SEO services. 15+ years of experience, 50+ successful projects. Web development, local SEO, multilingual sites, Google optimization.">
+    <meta name="keywords" content="modx development, modx cmf, modx revolution, modx website, modx developer, web development, website development, seo services, seo optimization, local seo, geo seo, local search pack, google seo, google optimization, google merchant, google shopping ads, multilingual websites, multilingual development, website security, mobile optimization, responsive design, business automation, llmo, large language model optimization, ai seo, content optimization, analytics, conversion optimization, web design, cms development, php development, custom website, ecommerce development, website maintenance, technical seo, on-page seo, off-page seo, search engine optimization, website speed optimization, core web vitals, structured data, schema markup, website audit, seo audit, keyword research, link building, content strategy, digital marketing, online presence, web solutions, website consulting, modx expert, seo expert, google expert, senior seo, web developer, freelance developer">
+
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700&family=Geist:wght@400;500;600&display=swap" rel="stylesheet">
@@ -144,6 +148,76 @@
             width: 16px;
             height: 16px;
             opacity: 0.7;
+        }
+
+        /* Experience Stats */
+        .experience-section {
+            margin: 28px 0;
+            animation: fadeIn 0.6s ease-out 0.3s backwards;
+        }
+
+        .experience-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 16px;
+        }
+
+        .experience-item {
+            background: linear-gradient(135deg, var(--bg-primary) 0%, var(--bg-secondary) 100%);
+            border: 1px solid var(--border-muted);
+            border-radius: 12px;
+            padding: 24px 16px;
+            text-align: center;
+            transition: all 0.2s ease;
+        }
+
+        .experience-item:hover {
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-md);
+            border-color: var(--border-default);
+        }
+
+        .experience-number {
+            display: block;
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 36px;
+            font-weight: 700;
+            color: var(--item-color, var(--accent-blue));
+            line-height: 1;
+            margin-bottom: 8px;
+        }
+
+        .experience-item:nth-child(1) .experience-number { color: var(--accent-blue); }
+        .experience-item:nth-child(2) .experience-number { color: var(--accent-green); }
+        .experience-item:nth-child(3) .experience-number { color: var(--accent-purple); }
+
+        .experience-label {
+            display: block;
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 11px;
+            font-weight: 500;
+            color: var(--text-secondary);
+            text-transform: uppercase;
+            letter-spacing: 0.3px;
+            line-height: 1.4;
+        }
+
+        @media (max-width: 480px) {
+            .experience-grid {
+                gap: 10px;
+            }
+            
+            .experience-item {
+                padding: 18px 10px;
+            }
+
+            .experience-number {
+                font-size: 28px;
+            }
+
+            .experience-label {
+                font-size: 9px;
+            }
         }
 
         /* Links Section */
@@ -429,6 +503,24 @@
             <span class="link-arrow">→</span>
         </a>
 
+        <!-- Experience Stats -->
+        <section class="experience-section">
+            <div class="experience-grid">
+                <div class="experience-item">
+                    <span class="experience-number">15+</span>
+                    <span class="experience-label">years with MODX</span>
+                </div>
+                <div class="experience-item">
+                    <span class="experience-number">19+</span>
+                    <span class="experience-label">years in SEO</span>
+                </div>
+                <div class="experience-item">
+                    <span class="experience-number">50+</span>
+                    <span class="experience-label">projects done</span>
+                </div>
+            </div>
+        </section>
+
         <!-- Services -->
         <section class="links-section">
             <div class="section-header">Services</div>
@@ -446,7 +538,7 @@
                 <div class="link-icon">🌐</div>
                 <div class="link-content">
                     <div class="link-title">Multilingual Websites</div>
-                    <div class="link-description">Full support for EN, RU, UK, DE, FR and other languages</div>
+                    <div class="link-description">Full support for EN, RU, UK and other languages</div>
                 </div>
             </div>
 
