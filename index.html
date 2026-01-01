@@ -10,7 +10,6 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/devicon.min.css">
     <style>
         :root {
             --bg-primary: #ffffff;
@@ -159,12 +158,16 @@
         }
 
         /* About Section */
+        .about-wrapper {
+            margin-top: 40px;
+        }
+
         .about-section {
             background: var(--bg-primary);
             border: 1px solid var(--border-muted);
             border-radius: 12px;
             padding: 24px;
-            margin: 24px 0 0 0;
+            margin: 16px 0 0 0;
         }
 
         .about-section p {
@@ -202,21 +205,66 @@
             border-radius: 12px;
             padding: 24px 16px;
             text-align: center;
-            transition: all 0.2s ease;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .experience-item::before {
+            content: '';
+            position: absolute;
+            top: -20px;
+            right: -20px;
+            width: 120px;
+            height: 120px;
+            opacity: 0.04;
+            transition: all 0.4s ease;
+        }
+
+        .experience-item:nth-child(1)::before {
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" fill="%230969da"><path d="M8 4.754a3.246 3.246 0 1 0 0 6.492 3.246 3.246 0 0 0 0-6.492zM5.754 8a2.246 2.246 0 1 1 4.492 0 2.246 2.246 0 0 1-4.492 0z"/><path d="M9.796 1.343c-.527-1.79-3.065-1.79-3.592 0l-.094.319a.873.873 0 0 1-1.255.52l-.292-.16c-1.64-.892-3.433.902-2.54 2.541l.159.292a.873.873 0 0 1-.52 1.255l-.319.094c-1.79.527-1.79 3.065 0 3.592l.319.094a.873.873 0 0 1 .52 1.255l-.16.292c-.892 1.64.901 3.434 2.541 2.54l.292-.159a.873.873 0 0 1 1.255.52l.094.319c.527 1.79 3.065 1.79 3.592 0l.094-.319a.873.873 0 0 1 1.255-.52l.292.16c1.64.893 3.434-.902 2.54-2.541l-.159-.292a.873.873 0 0 1 .52-1.255l.319-.094c1.79-.527 1.79-3.065 0-3.592l-.319-.094a.873.873 0 0 1-.52-1.255l.16-.292c.893-1.64-.902-3.433-2.541-2.54l-.292.159a.873.873 0 0 1-1.255-.52l-.094-.319z"/></svg>') no-repeat center;
+            background-size: contain;
+        }
+
+        .experience-item:nth-child(2)::before {
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" fill="%230969da"><path d="M7.657 6.247c.11-.33.576-.33.686 0l.645 1.937a2.89 2.89 0 0 0 1.828 1.828l1.937.645c.33.11.33.576 0 .686l-1.937.645a2.89 2.89 0 0 0-1.828 1.828l-.645 1.937a.361.361 0 0 1-.686 0l-.645-1.937a2.89 2.89 0 0 0-1.828-1.828l-1.937-.645a.361.361 0 0 1 0-.686l1.937-.645a2.89 2.89 0 0 0 1.828-1.828l.645-1.937zM3.794 1.148a.217.217 0 0 1 .412 0l.387 1.162c.173.518.579.924 1.097 1.097l1.162.387a.217.217 0 0 1 0 .412l-1.162.387A1.734 1.734 0 0 0 4.593 5.69l-.387 1.162a.217.217 0 0 1-.412 0L3.407 5.69a1.734 1.734 0 0 0-1.097-1.097l-1.162-.387a.217.217 0 0 1 0-.412l1.162-.387A1.734 1.734 0 0 0 3.407 2.31l.387-1.162zM10.863.099a.145.145 0 0 1 .274 0l.258.774c.115.346.386.617.732.732l.774.258a.145.145 0 0 1 0 .274l-.774.258a1.156 1.156 0 0 0-.732.732l-.258.774a.145.145 0 0 1-.274 0l-.258-.774a1.156 1.156 0 0 0-.732-.732L9.1 2.137a.145.145 0 0 1 0-.274l.774-.258c.346-.115.617-.386.732-.732L10.863.1z"/></svg>') no-repeat center;
+            background-size: contain;
+        }
+
+        .experience-item:nth-child(3)::before {
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="%230969da"><path d="M12 0L1.608 6v12L12 24l10.392-6V6L12 0zm-1.5 17.52l-4.5-2.6V9.08l4.5 2.6v5.84zm.75-7.02L6.75 7.9 12 5.3l5.25 2.6-5.25 2.6h-.75zm6 4.42l-4.5 2.6v-5.84l4.5-2.6v5.84z"/></svg>') no-repeat center;
+            background-size: contain;
         }
 
         .experience-item:hover {
-            transform: translateY(-2px);
-            box-shadow: var(--shadow-md);
-            border-color: var(--border-default);
+            transform: translateY(-4px);
+            box-shadow: 0 8px 16px rgba(31, 35, 40, 0.12);
+            border-color: var(--accent-blue);
+        }
+
+        .experience-item:hover::before {
+            opacity: 0.08;
+            transform: scale(1.1) rotate(5deg);
+        }
+
+        .experience-icon {
+            width: 32px;
+            height: 32px;
+            color: var(--accent-blue);
+            margin-bottom: 16px;
+            opacity: 0.9;
+            filter: drop-shadow(0 2px 4px rgba(9, 105, 218, 0.1));
         }
 
         .experience-number {
             display: block;
             font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
-            font-size: 36px;
+            font-size: 40px;
             font-weight: 700;
-            color: var(--accent-blue);
+            background: linear-gradient(135deg, var(--accent-blue) 0%, var(--accent-purple) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
             line-height: 1;
             margin-bottom: 8px;
         }
@@ -253,62 +301,6 @@
         /* Links Section */
         .links-section {
             margin-top: 40px;
-        }
-
-        /* Tech Stack */
-        .tech-section {
-            margin-top: 28px;
-        }
-
-        .tech-grid {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 12px;
-            justify-content: center;
-        }
-
-        .tech-item {
-            display: flex;
-            align-items: center;
-            gap: 8px;
-            background: var(--bg-primary);
-            border: 1px solid var(--border-muted);
-            border-radius: 8px;
-            padding: 10px 16px;
-            transition: all 0.2s ease;
-        }
-
-        .tech-item:hover {
-            border-color: var(--border-default);
-            box-shadow: var(--shadow-sm);
-            transform: translateY(-1px);
-        }
-
-        .tech-icon {
-            width: 20px;
-            height: 20px;
-            flex-shrink: 0;
-        }
-
-        .tech-name {
-            font-size: 13px;
-            font-weight: 500;
-            color: var(--text-secondary);
-        }
-
-        .tech-icon-font {
-            font-size: 20px;
-            width: 20px;
-            height: 20px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
-
-        .tech-icon-img {
-            width: 20px;
-            height: 20px;
-            flex-shrink: 0;
         }
 
         .section-header {
@@ -638,142 +630,39 @@
         </a>
 
         <!-- About -->
-        <div class="about-section">
-            <p data-i18n="about_1">IT degree with 19+ years in SEO - from the very beginning of search optimization. I develop, optimize, and promote websites on MODX Revolution (v2-v3).</p>
-            <p data-i18n="about_2">Full cycle SEO:<br>• On-Page: content, keywords, meta tags, headings, URLs, internal linking, images<br>• Off-Page: link building, local SEO, online listings, drop domains (finding relevant expired domains, link weight transfer, backlink profile recovery)<br>• Technical: site speed, mobile-friendliness, structured data, XML sitemaps</p>
-            <p data-i18n="about_3">Full cycle Web Development:<br>• Planning: requirements analysis, market research, architecture, competitor research, prototyping<br>• Development: MODX CMF setup, custom templates, responsive design, multilingual support<br>• Optimization: speed tuning, SEO-ready structure, security hardening<br>• Launch & Support: testing, deployment, ongoing maintenance</p>
-            <p data-i18n="about_5">I don't work with these niches: escort, adult content, psychics, drugs, gambling, pyramid schemes. I don't work with CMS: WordPress, Joomla, Drupal, Bitrix, OpenCart, Tilda, Wix.</p>
-            <p class="about-highlight" data-i18n="about_4">Working with me is like finding a great dentist - once you do, you don't switch.</p>
-        </div>
+        <section class="about-wrapper">
+            <div class="section-header" data-i18n="about_title">About Me</div>
+            <p class="section-intro" data-i18n="about_intro">Who I am and what I do</p>
+            
+            <div class="about-section">
+                <p data-i18n="about_1">IT degree with 19+ years in SEO - from the very beginning of search optimization. I develop, optimize, and promote websites on MODX Revolution (v2-v3).</p>
+                <p data-i18n="about_2">Full cycle SEO:<br>• On-Page: content, keywords, meta tags, headings, URLs, internal linking, images<br>• Off-Page: link building, local SEO, online listings, drop domains (finding relevant expired domains, link weight transfer, backlink profile recovery)<br>• Technical: site speed, mobile-friendliness, structured data, XML sitemaps</p>
+                <p data-i18n="about_3">Full cycle Web Development:<br>• Planning: requirements analysis, market research, architecture, competitor research, prototyping<br>• Development: MODX CMF setup, custom templates, responsive design, multilingual support<br>• Optimization: speed tuning, SEO-ready structure, security hardening<br>• Launch & Support: testing, deployment, ongoing maintenance</p>
+                <p data-i18n="about_5">I don't work with these niches: escort, adult content, psychics, drugs, gambling, pyramid schemes. I don't work with CMS: WordPress, Joomla, Drupal, Bitrix, OpenCart, Tilda, Wix.</p>
+                <p class="about-highlight" data-i18n="about_4">Working with me is like finding a great dentist - once you do, you don't switch.</p>
+            </div>
+        </section>
 
         <!-- Experience Stats -->
         <section class="experience-section">
+            <div class="section-header" data-i18n="experience_title">Experience</div>
+            <p class="section-intro" data-i18n="experience_intro">My professional journey</p>
+            
             <div class="experience-grid">
                 <div class="experience-item">
+                    <svg class="experience-icon" viewBox="0 0 16 16" fill="currentColor"><path d="M8 4.754a3.246 3.246 0 1 0 0 6.492 3.246 3.246 0 0 0 0-6.492zM5.754 8a2.246 2.246 0 1 1 4.492 0 2.246 2.246 0 0 1-4.492 0z"/><path d="M9.796 1.343c-.527-1.79-3.065-1.79-3.592 0l-.094.319a.873.873 0 0 1-1.255.52l-.292-.16c-1.64-.892-3.433.902-2.54 2.541l.159.292a.873.873 0 0 1-.52 1.255l-.319.094c-1.79.527-1.79 3.065 0 3.592l.319.094a.873.873 0 0 1 .52 1.255l-.16.292c-.892 1.64.901 3.434 2.541 2.54l.292-.159a.873.873 0 0 1 1.255.52l.094.319c.527 1.79 3.065 1.79 3.592 0l.094-.319a.873.873 0 0 1 1.255-.52l.292.16c1.64.893 3.434-.902 2.54-2.541l-.159-.292a.873.873 0 0 1 .52-1.255l.319-.094c1.79-.527 1.79-3.065 0-3.592l-.319-.094a.873.873 0 0 1-.52-1.255l.16-.292c.893-1.64-.902-3.433-2.541-2.54l-.292.159a.873.873 0 0 1-1.255-.52l-.094-.319zm-2.633.283c.246-.835 1.428-.835 1.674 0l.094.319a1.873 1.873 0 0 0 2.693 1.115l.291-.16c.764-.415 1.6.42 1.184 1.185l-.159.292a1.873 1.873 0 0 0 1.116 2.692l.318.094c.835.246.835 1.428 0 1.674l-.319.094a1.873 1.873 0 0 0-1.115 2.693l.16.291c.415.764-.42 1.6-1.185 1.184l-.291-.159a1.873 1.873 0 0 0-2.693 1.116l-.094.318c-.246.835-1.428.835-1.674 0l-.094-.319a1.873 1.873 0 0 0-2.692-1.115l-.292.16c-.764.415-1.6-.42-1.184-1.185l.159-.291A1.873 1.873 0 0 0 1.945 8.93l-.319-.094c-.835-.246-.835-1.428 0-1.674l.319-.094A1.873 1.873 0 0 0 3.06 4.377l-.16-.292c-.415-.764.42-1.6 1.185-1.184l.292.159a1.873 1.873 0 0 0 2.692-1.115l.094-.319z"/></svg>
                     <span class="experience-number">21+</span>
                     <span class="experience-label" data-i18n="exp_webdev">years in Web Dev</span>
                 </div>
                 <div class="experience-item">
+                    <svg class="experience-icon" viewBox="0 0 16 16" fill="currentColor"><path d="M7.657 6.247c.11-.33.576-.33.686 0l.645 1.937a2.89 2.89 0 0 0 1.828 1.828l1.937.645c.33.11.33.576 0 .686l-1.937.645a2.89 2.89 0 0 0-1.828 1.828l-.645 1.937a.361.361 0 0 1-.686 0l-.645-1.937a2.89 2.89 0 0 0-1.828-1.828l-1.937-.645a.361.361 0 0 1 0-.686l1.937-.645a2.89 2.89 0 0 0 1.828-1.828l.645-1.937zM3.794 1.148a.217.217 0 0 1 .412 0l.387 1.162c.173.518.579.924 1.097 1.097l1.162.387a.217.217 0 0 1 0 .412l-1.162.387A1.734 1.734 0 0 0 4.593 5.69l-.387 1.162a.217.217 0 0 1-.412 0L3.407 5.69a1.734 1.734 0 0 0-1.097-1.097l-1.162-.387a.217.217 0 0 1 0-.412l1.162-.387A1.734 1.734 0 0 0 3.407 2.31l.387-1.162zM10.863.099a.145.145 0 0 1 .274 0l.258.774c.115.346.386.617.732.732l.774.258a.145.145 0 0 1 0 .274l-.774.258a1.156 1.156 0 0 0-.732.732l-.258.774a.145.145 0 0 1-.274 0l-.258-.774a1.156 1.156 0 0 0-.732-.732L9.1 2.137a.145.145 0 0 1 0-.274l.774-.258c.346-.115.617-.386.732-.732L10.863.1z"/></svg>
                     <span class="experience-number">19+</span>
                     <span class="experience-label" data-i18n="exp_seo">years in SEO</span>
                 </div>
                 <div class="experience-item">
+                    <svg class="experience-icon" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0L1.608 6v12L12 24l10.392-6V6L12 0zm-1.5 17.52l-4.5-2.6V9.08l4.5 2.6v5.84zm.75-7.02L6.75 7.9 12 5.3l5.25 2.6-5.25 2.6h-.75zm6 4.42l-4.5 2.6v-5.84l4.5-2.6v5.84z"/></svg>
                     <span class="experience-number">15+</span>
                     <span class="experience-label" data-i18n="exp_modx">years with MODX</span>
-                </div>
-            </div>
-        </section>
-
-        <!-- Tech Stack -->
-        <section class="tech-section">
-            <div class="section-header" data-i18n="tech_title">Tech Stack</div>
-            <div class="tech-grid">
-                <div class="tech-item">
-                    <i class="devicon-php-plain colored tech-icon-font"></i>
-                    <span class="tech-name">PHP</span>
-                </div>
-                <div class="tech-item">
-                    <i class="devicon-mysql-plain colored tech-icon-font"></i>
-                    <span class="tech-name">MySQL</span>
-                </div>
-                <div class="tech-item">
-                    <svg class="tech-icon" viewBox="0 0 24 24" fill="#102C53"><path d="M12 0L1.608 6v12L12 24l10.392-6V6L12 0zm-1.5 17.52l-4.5-2.6V9.08l4.5 2.6v5.84zm.75-7.02L6.75 7.9 12 5.3l5.25 2.6-5.25 2.6h-.75zm6 4.42l-4.5 2.6v-5.84l4.5-2.6v5.84z"/></svg>
-                    <span class="tech-name">MODX Revolution</span>
-                </div>
-                <div class="tech-item">
-                    <i class="devicon-html5-plain colored tech-icon-font"></i>
-                    <span class="tech-name">HTML5</span>
-                </div>
-                <div class="tech-item">
-                    <i class="devicon-css3-plain colored tech-icon-font"></i>
-                    <span class="tech-name">CSS3</span>
-                </div>
-                <div class="tech-item">
-                    <i class="devicon-sass-original colored tech-icon-font"></i>
-                    <span class="tech-name">SASS</span>
-                </div>
-                <div class="tech-item">
-                    <i class="devicon-javascript-plain colored tech-icon-font"></i>
-                    <span class="tech-name">JavaScript</span>
-                </div>
-                <div class="tech-item">
-                    <i class="devicon-jquery-plain colored tech-icon-font"></i>
-                    <span class="tech-name">jQuery</span>
-                </div>
-                <div class="tech-item">
-                    <i class="devicon-json-plain colored tech-icon-font"></i>
-                    <span class="tech-name">LD-JSON</span>
-                </div>
-                <div class="tech-item">
-                    <i class="devicon-git-plain colored tech-icon-font"></i>
-                    <span class="tech-name">Git</span>
-                </div>
-                <div class="tech-item">
-                    <i class="devicon-nginx-original colored tech-icon-font"></i>
-                    <span class="tech-name">Nginx</span>
-                </div>
-                <div class="tech-item">
-                    <i class="devicon-apache-plain colored tech-icon-font"></i>
-                    <span class="tech-name">Apache</span>
-                </div>
-                <div class="tech-item">
-                    <i class="devicon-cloudflare-plain colored tech-icon-font"></i>
-                    <span class="tech-name">Cloudflare</span>
-                </div>
-                <div class="tech-item">
-                    <i class="devicon-openapi-plain colored tech-icon-font"></i>
-                    <span class="tech-name">REST API</span>
-                </div>
-            </div>
-        </section>
-
-        <!-- SEO Stack -->
-        <section class="tech-section">
-            <div class="section-header" data-i18n="seo_stack_title">SEO Stack</div>
-            <div class="tech-grid">
-                <div class="tech-item">
-                    <img class="tech-icon-img" src="https://cdn.simpleicons.org/googlesearchconsole/458CF5" alt="Google Search Console">
-                    <span class="tech-name">Google Search Console</span>
-                </div>
-                <div class="tech-item">
-                    <img class="tech-icon-img" src="https://cdn.simpleicons.org/googleanalytics/E37400" alt="Google Analytics">
-                    <span class="tech-name">Google Analytics</span>
-                </div>
-                <div class="tech-item">
-                    <img class="tech-icon-img" src="https://cdn.simpleicons.org/googletagmanager/246FDB" alt="Google Tag Manager">
-                    <span class="tech-name">Google Tag Manager</span>
-                </div>
-                <div class="tech-item">
-                    <img class="tech-icon-img" src="https://cdn.simpleicons.org/googlecloud/4285F4" alt="Google Cloud">
-                    <span class="tech-name">Google Cloud API</span>
-                </div>
-                <div class="tech-item">
-                    <img class="tech-icon-img" src="https://cdn.simpleicons.org/pagespeedinsights/4285F4" alt="PageSpeed Insights">
-                    <span class="tech-name">PageSpeed Insights</span>
-                </div>
-                <div class="tech-item">
-                    <svg class="tech-icon" viewBox="0 0 24 24" fill="#FF6A3D"><path d="M21.1 7.3l-9-5.2c-.3-.2-.7-.2-1 0l-9 5.2c-.3.2-.5.5-.5.9v10.4c0 .4.2.7.5.9l9 5.2c.2.1.3.1.5.1s.3 0 .5-.1l9-5.2c.3-.2.5-.5.5-.9V8.2c0-.4-.2-.7-.5-.9zM12 4.2l7 4-7 4-7-4 7-4zm-8 5.5l7 4v8l-7-4v-8zm9 12v-8l7-4v8l-7 4z"/></svg>
-                    <span class="tech-name">Ahrefs</span>
-                </div>
-                <div class="tech-item">
-                    <svg class="tech-icon" viewBox="0 0 24 24" fill="#FF642D"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8zm-1-13h2v6h-2zm0 8h2v2h-2z"/></svg>
-                    <span class="tech-name">Semrush</span>
-                </div>
-                <div class="tech-item">
-                    <svg class="tech-icon" viewBox="0 0 24 24" fill="#4A90D9"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/></svg>
-                    <span class="tech-name">Moz</span>
-                </div>
-                <div class="tech-item">
-                    <svg class="tech-icon" viewBox="0 0 24 24" fill="#F59E0B"><path d="M15.5 14h-.79l-.28-.27C15.41 12.59 16 11.11 16 9.5 16 5.91 13.09 3 9.5 3S3 5.91 3 9.5 5.91 16 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z"/></svg>
-                    <span class="tech-name">Ubersuggest</span>
-                </div>
-                <div class="tech-item">
-                    <svg class="tech-icon" viewBox="0 0 24 24" fill="#5BA745"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 17.93c-3.95-.49-7-3.85-7-7.93 0-.62.08-1.21.21-1.79L9 15v1c0 1.1.9 2 2 2v1.93zm6.9-2.54c-.26-.81-1-1.39-1.9-1.39h-1v-3c0-.55-.45-1-1-1H8v-2h2c.55 0 1-.45 1-1V7h2c1.1 0 2-.9 2-2v-.41c2.93 1.19 5 4.06 5 7.41 0 2.08-.8 3.97-2.1 5.39z"/></svg>
-                    <span class="tech-name">Screaming Frog SEO</span>
-                </div>
-                <div class="tech-item">
-                    <svg class="tech-icon" viewBox="0 0 24 24" fill="#6366F1"><path d="M12 0C5.373 0 0 5.373 0 12s5.373 12 12 12 12-5.373 12-12S18.627 0 12 0zM6 6h12v2H6V6zm0 4h12v2H6v-2zm0 4h12v2H6v-2zm0 4h8v2H6v-2z"/></svg>
-                    <span class="tech-name">Topvisor</span>
                 </div>
             </div>
         </section>
@@ -977,7 +866,9 @@ const translations = {
         stat_google: "Google Expert",
         tg_title: "Contact on Telegram",
         tg_desc: "@modx_pro - Let's discuss your project",
-        about_1: "IT degree with 19+ years in SEO - from the very beginning of search optimization. I develop, optimize, and promote websites on MODX Revolution (v2-v3).",
+        about_title: "About Me",
+        about_intro: "Who I am and what I do",
+        about_1: "IT degree with 21+ years in web development, 19+ years in SEO - from the very beginning of search optimization, and 15+ years developing on MODX Revolution. I develop, optimize, and promote websites that dominate search results.",
         about_2: "<strong>Full cycle SEO:</strong><br>• On-Page: content, keywords, meta tags, headings, URLs, internal linking, images<br>• Off-Page: link building, local SEO, online listings, drop domains (finding relevant expired domains, link weight transfer, backlink profile recovery)<br>• Technical: site speed, mobile-friendliness, structured data, XML sitemaps",
         about_3: "<strong>Full cycle Web Development:</strong><br>• Planning: requirements analysis, market research, architecture, competitor research, prototyping<br>• Development: MODX CMF setup, custom templates, responsive design, multilingual support<br>• Optimization: speed tuning, SEO-ready structure, security hardening<br>• Launch & Support: testing, deployment, ongoing maintenance",
         about_4: "Working with me is like finding a great dentist - once you do, you don't switch.",
@@ -985,8 +876,8 @@ const translations = {
         exp_seo: "years in SEO",
         exp_modx: "years with MODX",
         exp_webdev: "years in Web Dev",
-        tech_title: "Tech Stack",
-        seo_stack_title: "SEO Stack",
+        experience_title: "Experience",
+        experience_intro: "My experience in web development and SEO promotion",
         services_title: "Services",
         services_intro: "My services for your business",
         srv_web_title: "Web Development",
@@ -1035,7 +926,9 @@ const translations = {
         stat_google: "Google эксперт",
         tg_title: "Написать в Telegram",
         tg_desc: "@modx_pro - Обсудим ваш проект",
-        about_1: "Высшее техническое образование в сфере IT, 19+ лет в SEO - с самого начала зарождения поисковой оптимизации. Разрабатываю, оптимизирую и продвигаю сайты на MODX Revolution (v2-v3).",
+        about_title: "Обо мне",
+        about_intro: "Кто я и чем занимаюсь",
+        about_1: "Высшее техническое образование в сфере IT, 21+ год в веб-разработке, 19+ лет в SEO - с самого начала зарождения поисковой оптимизации, и 15+ лет разработки на MODX Revolution. Разрабатываю, оптимизирую и продвигаю сайты, которые доминируют в поисковой выдаче.",
         about_2: "<strong>Полный цикл SEO:</strong><br>• On-Page: контент, ключевые слова, мета-теги, заголовки, URL, внутренняя перелинковка, изображения<br>• Off-Page: линкбилдинг, локальное SEO, каталоги, дроп-домены (поиск релевантных истёкших доменов, перекачка ссылочного веса, восстановление ссылочного профиля)<br>• Technical: скорость сайта, мобильная адаптация, структурированные данные, XML-карты",
         about_3: "<strong>Полный цикл разработки сайта:</strong><br>• Планирование: анализ требований, анализ рынка, архитектура, исследование конкурентов, прототипирование<br>• Разработка: настройка MODX CMF, кастомные шаблоны, адаптивный дизайн, мультиязычность<br>• Оптимизация: ускорение, SEO-структура, защита безопасности<br>• Запуск и поддержка: тестирование, деплой, техническое сопровождение",
         about_4: "Работа со мной - как найти хорошего стоматолога: однажды найдёшь - больше не меняешь.",
@@ -1043,8 +936,8 @@ const translations = {
         exp_seo: "лет в SEO",
         exp_modx: "лет с MODX",
         exp_webdev: "лет в Web Dev",
-        tech_title: "Технологии",
-        seo_stack_title: "SEO-инструменты",
+        experience_title: "Опыт",
+        experience_intro: "Мой опыт в разработке и SEO продвижении сайтов",
         services_title: "Услуги",
         services_intro: "Мои услуги для вашего бизнеса",
         srv_web_title: "Веб-разработка",
@@ -1093,7 +986,9 @@ const translations = {
         stat_google: "Google експерт",
         tg_title: "Написати в Telegram",
         tg_desc: "@modx_pro - Обговоримо ваш проект",
-        about_1: "Вища технічна освіта в сфері IT, 19+ років у SEO - з самого початку зародження пошукової оптимізації. Розробляю, оптимізую та просуваю сайти на MODX Revolution (v2-v3).",
+        about_title: "Про мене",
+        about_intro: "Хто я і чим займаюсь",
+        about_1: "Вища технічна освіта в сфері IT, 21+ рік у веб-розробці, 19+ років у SEO - з самого початку зародження пошукової оптимізації, та 15+ років розробки на MODX Revolution. Розробляю, оптимізую та просуваю сайти, які домінують у пошуковій видачі.",
         about_2: "<strong>Повний цикл SEO:</strong><br>• On-Page: контент, ключові слова, мета-теги, заголовки, URL, внутрішня перелінковка, зображення<br>• Off-Page: лінкбілдинг, локальне SEO, каталоги, дроп-домени (пошук релевантних прострочених доменів, перекачка посилального веса, відновлення посилального профілю)<br>• Technical: швидкість сайту, мобільна адаптація, структуровані дані, XML-карти",
         about_3: "<strong>Повний цикл розробки сайту:</strong><br>• Планування: аналіз вимог, аналіз ринку, архітектура, дослідження конкурентів, прототипування<br>• Розробка: налаштування MODX CMF, кастомні шаблони, адаптивний дизайн, мультимовність<br>• Оптимізація: прискорення, SEO-структура, захист безпеки<br>• Запуск і підтримка: тестування, деплой, технічне супроводження",
         about_4: "Робота зі мною - як знайти хорошого стоматолога: одного разу знайдеш - більше не змінюєш.",
@@ -1101,8 +996,8 @@ const translations = {
         exp_seo: "років у SEO",
         exp_modx: "років з MODX",
         exp_webdev: "років у Web Dev",
-        tech_title: "Технології",
-        seo_stack_title: "SEO-інструменти",
+        experience_title: "Досвід",
+        experience_intro: "Мій досвід у розробці та SEO просуванні сайтів",
         services_title: "Послуги",
         services_intro: "Мої послуги для вашого бізнесу",
         srv_web_title: "Веб-розробка",
