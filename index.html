@@ -10,6 +10,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/devicon.min.css">
     <style>
         :root {
             --bg-primary: #ffffff;
@@ -254,6 +255,62 @@
             margin-top: 40px;
         }
 
+        /* Tech Stack */
+        .tech-section {
+            margin-top: 28px;
+        }
+
+        .tech-grid {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 12px;
+            justify-content: center;
+        }
+
+        .tech-item {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            background: var(--bg-primary);
+            border: 1px solid var(--border-muted);
+            border-radius: 8px;
+            padding: 10px 16px;
+            transition: all 0.2s ease;
+        }
+
+        .tech-item:hover {
+            border-color: var(--border-default);
+            box-shadow: var(--shadow-sm);
+            transform: translateY(-1px);
+        }
+
+        .tech-icon {
+            width: 20px;
+            height: 20px;
+            flex-shrink: 0;
+        }
+
+        .tech-name {
+            font-size: 13px;
+            font-weight: 500;
+            color: var(--text-secondary);
+        }
+
+        .tech-icon-font {
+            font-size: 20px;
+            width: 20px;
+            height: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .tech-icon-img {
+            width: 20px;
+            height: 20px;
+            flex-shrink: 0;
+        }
+
         .section-header {
             font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
             font-size: 11px;
@@ -281,6 +338,42 @@
             margin-bottom: 16px;
             padding-left: 4px;
             font-style: italic;
+        }
+
+        /* Collapsible section */
+        .section-header.collapsible {
+            cursor: pointer;
+            user-select: none;
+            transition: color 0.2s ease;
+        }
+
+        .section-header.collapsible:hover {
+            color: var(--accent-blue);
+        }
+
+        .section-header.collapsible::after {
+            display: none;
+        }
+
+        .collapse-icon {
+            transition: transform 0.3s ease;
+            color: var(--text-muted);
+        }
+
+        .section-header.collapsible.active .collapse-icon {
+            transform: rotate(180deg);
+        }
+
+        .solutions-content {
+            overflow: hidden;
+            transition: max-height 0.4s ease, opacity 0.3s ease;
+            max-height: 2000px;
+            opacity: 1;
+        }
+
+        .solutions-content.collapsed {
+            max-height: 0;
+            opacity: 0;
         }
 
         /* Link Cards */
@@ -570,6 +663,120 @@
                 </div>
             </div>
         </section>
+
+        <!-- Tech Stack -->
+        <section class="tech-section">
+            <div class="section-header" data-i18n="tech_title">Tech Stack</div>
+            <div class="tech-grid">
+                <div class="tech-item">
+                    <svg class="tech-icon" viewBox="0 0 24 24" fill="#102C53"><path d="M12 0L1.608 6v12L12 24l10.392-6V6L12 0zm-1.5 17.52l-4.5-2.6V9.08l4.5 2.6v5.84zm.75-7.02L6.75 7.9 12 5.3l5.25 2.6-5.25 2.6h-.75zm6 4.42l-4.5 2.6v-5.84l4.5-2.6v5.84z"/></svg>
+                    <span class="tech-name">MODX Revolution</span>
+                </div>
+                <div class="tech-item">
+                    <i class="devicon-html5-plain colored tech-icon-font"></i>
+                    <span class="tech-name">HTML5</span>
+                </div>
+                <div class="tech-item">
+                    <i class="devicon-css3-plain colored tech-icon-font"></i>
+                    <span class="tech-name">CSS3</span>
+                </div>
+                <div class="tech-item">
+                    <i class="devicon-sass-original colored tech-icon-font"></i>
+                    <span class="tech-name">SASS</span>
+                </div>
+                <div class="tech-item">
+                    <i class="devicon-javascript-plain colored tech-icon-font"></i>
+                    <span class="tech-name">JavaScript</span>
+                </div>
+                <div class="tech-item">
+                    <i class="devicon-jquery-plain colored tech-icon-font"></i>
+                    <span class="tech-name">jQuery</span>
+                </div>
+                <div class="tech-item">
+                    <i class="devicon-php-plain colored tech-icon-font"></i>
+                    <span class="tech-name">PHP</span>
+                </div>
+                <div class="tech-item">
+                    <i class="devicon-mysql-plain colored tech-icon-font"></i>
+                    <span class="tech-name">MySQL</span>
+                </div>
+                <div class="tech-item">
+                    <i class="devicon-git-plain colored tech-icon-font"></i>
+                    <span class="tech-name">Git</span>
+                </div>
+                <div class="tech-item">
+                    <i class="devicon-json-plain colored tech-icon-font"></i>
+                    <span class="tech-name">LD-JSON</span>
+                </div>
+                <div class="tech-item">
+                    <i class="devicon-nginx-original colored tech-icon-font"></i>
+                    <span class="tech-name">Nginx</span>
+                </div>
+                <div class="tech-item">
+                    <i class="devicon-apache-plain colored tech-icon-font"></i>
+                    <span class="tech-name">Apache</span>
+                </div>
+                <div class="tech-item">
+                    <i class="devicon-cloudflare-plain colored tech-icon-font"></i>
+                    <span class="tech-name">Cloudflare</span>
+                </div>
+                <div class="tech-item">
+                    <i class="devicon-openapi-plain colored tech-icon-font"></i>
+                    <span class="tech-name">REST API</span>
+                </div>
+            </div>
+        </section>
+
+        <!-- SEO Stack -->
+        <section class="tech-section">
+            <div class="section-header" data-i18n="seo_stack_title">SEO Stack</div>
+            <div class="tech-grid">
+                <div class="tech-item">
+                    <svg class="tech-icon" viewBox="0 0 24 24" fill="#FF6A3D"><path d="M21.1 7.3l-9-5.2c-.3-.2-.7-.2-1 0l-9 5.2c-.3.2-.5.5-.5.9v10.4c0 .4.2.7.5.9l9 5.2c.2.1.3.1.5.1s.3 0 .5-.1l9-5.2c.3-.2.5-.5.5-.9V8.2c0-.4-.2-.7-.5-.9zM12 4.2l7 4-7 4-7-4 7-4zm-8 5.5l7 4v8l-7-4v-8zm9 12v-8l7-4v8l-7 4z"/></svg>
+                    <span class="tech-name">Ahrefs</span>
+                </div>
+                <div class="tech-item">
+                    <svg class="tech-icon" viewBox="0 0 24 24" fill="#FF642D"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8zm-1-13h2v6h-2zm0 8h2v2h-2z"/></svg>
+                    <span class="tech-name">Semrush</span>
+                </div>
+                <div class="tech-item">
+                    <svg class="tech-icon" viewBox="0 0 24 24" fill="#F59E0B"><path d="M15.5 14h-.79l-.28-.27C15.41 12.59 16 11.11 16 9.5 16 5.91 13.09 3 9.5 3S3 5.91 3 9.5 5.91 16 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z"/></svg>
+                    <span class="tech-name">Ubersuggest</span>
+                </div>
+                <div class="tech-item">
+                    <svg class="tech-icon" viewBox="0 0 24 24" fill="#4A90D9"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/></svg>
+                    <span class="tech-name">Moz</span>
+                </div>
+                <div class="tech-item">
+                    <img class="tech-icon-img" src="https://cdn.simpleicons.org/googlesearchconsole/458CF5" alt="Google Search Console">
+                    <span class="tech-name">Google Search Console</span>
+                </div>
+                <div class="tech-item">
+                    <img class="tech-icon-img" src="https://cdn.simpleicons.org/googlecloud/4285F4" alt="Google Cloud">
+                    <span class="tech-name">Google Cloud API</span>
+                </div>
+                <div class="tech-item">
+                    <img class="tech-icon-img" src="https://cdn.simpleicons.org/googleanalytics/E37400" alt="Google Analytics">
+                    <span class="tech-name">Google Analytics</span>
+                </div>
+                <div class="tech-item">
+                    <img class="tech-icon-img" src="https://cdn.simpleicons.org/googletagmanager/246FDB" alt="Google Tag Manager">
+                    <span class="tech-name">Google Tag Manager</span>
+                </div>
+                <div class="tech-item">
+                    <img class="tech-icon-img" src="https://cdn.simpleicons.org/pagespeedinsights/4285F4" alt="PageSpeed Insights">
+                    <span class="tech-name">PageSpeed Insights</span>
+                </div>
+                <div class="tech-item">
+                    <svg class="tech-icon" viewBox="0 0 24 24" fill="#5BA745"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 17.93c-3.95-.49-7-3.85-7-7.93 0-.62.08-1.21.21-1.79L9 15v1c0 1.1.9 2 2 2v1.93zm6.9-2.54c-.26-.81-1-1.39-1.9-1.39h-1v-3c0-.55-.45-1-1-1H8v-2h2c.55 0 1-.45 1-1V7h2c1.1 0 2-.9 2-2v-.41c2.93 1.19 5 4.06 5 7.41 0 2.08-.8 3.97-2.1 5.39z"/></svg>
+                    <span class="tech-name">Screaming Frog SEO</span>
+                </div>
+                <div class="tech-item">
+                    <svg class="tech-icon" viewBox="0 0 24 24" fill="#6366F1"><path d="M12 0C5.373 0 0 5.373 0 12s5.373 12 12 12 12-5.373 12-12S18.627 0 12 0zM6 6h12v2H6V6zm0 4h12v2H6v-2zm0 4h12v2H6v-2zm0 4h8v2H6v-2z"/></svg>
+                    <span class="tech-name">Topvisor</span>
+                </div>
+            </div>
+        </section>
         </div>
 
         <!-- Services -->
@@ -660,7 +867,11 @@
 
         <!-- Ready Solutions -->
         <section class="links-section solutions-section">
-            <div class="section-header" data-i18n="solutions_title">Ready Solutions</div>
+            <div class="section-header collapsible" onclick="toggleSolutions()">
+                <span data-i18n="solutions_title">Ready Solutions</span>
+                <svg class="collapse-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"></polyline></svg>
+            </div>
+            <div class="solutions-content collapsed">
             <p class="section-intro" data-i18n="solutions_intro">My own tools and personal development projects</p>
 
             <div class="link-card solution-card" style="--card-accent: var(--accent-cyan);">
@@ -742,6 +953,7 @@
                     <div class="link-description" data-i18n="tool_position_desc">Dashboard for Topvisor data export with CSV import</div>
                 </div>
             </div>
+            </div>
         </section>
 
         <!-- Footer -->
@@ -773,6 +985,8 @@ const translations = {
         exp_seo: "years in SEO",
         exp_modx: "years with MODX",
         exp_projects: "projects done",
+        tech_title: "Tech Stack",
+        seo_stack_title: "SEO Stack",
         services_title: "Services",
         services_intro: "My services for your business",
         srv_web_title: "Web Development",
@@ -829,6 +1043,8 @@ const translations = {
         exp_seo: "лет в SEO",
         exp_modx: "лет с MODX",
         exp_projects: "проектов",
+        tech_title: "Технологии",
+        seo_stack_title: "SEO-инструменты",
         services_title: "Услуги",
         services_intro: "Мои услуги для вашего бизнеса",
         srv_web_title: "Веб-разработка",
@@ -885,6 +1101,8 @@ const translations = {
         exp_seo: "років у SEO",
         exp_modx: "років з MODX",
         exp_projects: "проектів",
+        tech_title: "Технології",
+        seo_stack_title: "SEO-інструменти",
         services_title: "Послуги",
         services_intro: "Мої послуги для вашого бізнесу",
         srv_web_title: "Веб-розробка",
@@ -962,6 +1180,15 @@ document.addEventListener('DOMContentLoaded', () => {
         btn.addEventListener('click', () => setLanguage(btn.dataset.lang));
     });
 });
+
+// Toggle Ready Solutions
+function toggleSolutions() {
+    const header = document.querySelector('.section-header.collapsible');
+    const content = document.querySelector('.solutions-content');
+    
+    header.classList.toggle('active');
+    content.classList.toggle('collapsed');
+}
 </script>
 
 <script>
