@@ -10,7 +10,7 @@
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700&family=Geist:wght@400;500;600&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
     <style>
         :root {
             --bg-primary: #ffffff;
@@ -40,36 +40,23 @@
         }
 
         body {
-            font-family: 'Geist', -apple-system, BlinkMacSystemFont, sans-serif;
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
             background: var(--bg-secondary);
             color: var(--text-primary);
             min-height: 100vh;
             line-height: 1.5;
+            -webkit-font-smoothing: antialiased;
         }
 
         .container {
-            max-width: 1200px;
+            max-width: 720px;
             margin: 0 auto;
             padding: 48px 24px;
         }
 
         .header-section {
-            max-width: 600px;
+            max-width: 720px;
             margin: 0 auto;
-        }
-
-        .two-column-grid {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 32px;
-            margin-top: 32px;
-        }
-
-        @media (max-width: 768px) {
-            .two-column-grid {
-                grid-template-columns: 1fr;
-                gap: 24px;
-            }
         }
 
         /* Header */
@@ -114,15 +101,16 @@
         }
 
         .username {
-            font-family: 'JetBrains Mono', monospace;
-            font-size: 24px;
-            font-weight: 600;
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            font-size: 28px;
+            font-weight: 700;
             color: var(--text-primary);
             margin-bottom: 4px;
             display: flex;
             align-items: center;
             justify-content: center;
             gap: 8px;
+            letter-spacing: -0.5px;
         }
 
         .verified {
@@ -152,8 +140,8 @@
             justify-content: center;
             flex-wrap: wrap;
             gap: 12px 20px;
-            font-family: 'JetBrains Mono', monospace;
-            font-size: 11px;
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            font-size: 12px;
             color: var(--text-muted);
         }
 
@@ -198,7 +186,7 @@
 
         .experience-number {
             display: block;
-            font-family: 'JetBrains Mono', monospace;
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
             font-size: 36px;
             font-weight: 700;
             color: var(--item-color, var(--accent-blue));
@@ -207,13 +195,13 @@
         }
 
         .experience-item:nth-child(1) .experience-number { color: var(--accent-blue); }
-        .experience-item:nth-child(2) .experience-number { color: var(--accent-green); }
-        .experience-item:nth-child(3) .experience-number { color: var(--accent-purple); }
+        .experience-item:nth-child(2) .experience-number { color: var(--accent-blue); }
+        .experience-item:nth-child(3) .experience-number { color: var(--accent-blue); }
 
         .experience-label {
             display: block;
-            font-family: 'JetBrains Mono', monospace;
-            font-size: 11px;
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            font-size: 12px;
             font-weight: 500;
             color: var(--text-secondary);
             text-transform: uppercase;
@@ -241,16 +229,16 @@
 
         /* Links Section */
         .links-section {
-            margin-top: 0;
+            margin-top: 40px;
         }
 
         .section-header {
-            font-family: 'JetBrains Mono', monospace;
-            font-size: 12px;
-            font-weight: 500;
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            font-size: 11px;
+            font-weight: 600;
             color: var(--text-muted);
             text-transform: uppercase;
-            letter-spacing: 0.5px;
+            letter-spacing: 1px;
             margin-bottom: 12px;
             padding-left: 4px;
             display: flex;
@@ -345,8 +333,8 @@
         }
 
         .link-title {
-            font-family: 'JetBrains Mono', monospace;
-            font-size: 14px;
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            font-size: 15px;
             font-weight: 600;
             color: var(--text-primary);
             margin-bottom: 4px;
@@ -431,8 +419,8 @@
         }
 
         .footer-text {
-            font-family: 'JetBrains Mono', monospace;
-            font-size: 11px;
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            font-size: 13px;
             color: var(--text-muted);
             display: flex;
             align-items: center;
@@ -536,12 +524,12 @@
         <section class="experience-section">
             <div class="experience-grid">
                 <div class="experience-item">
-                    <span class="experience-number">15+</span>
-                    <span class="experience-label">years with MODX</span>
-                </div>
-                <div class="experience-item">
                     <span class="experience-number">19+</span>
                     <span class="experience-label">years in SEO</span>
+                </div>
+                <div class="experience-item">
+                    <span class="experience-number">15+</span>
+                    <span class="experience-label">years with MODX</span>
                 </div>
                 <div class="experience-item">
                     <span class="experience-number">50+</span>
@@ -551,8 +539,7 @@
         </section>
         </div>
 
-        <!-- Two Column Layout -->
-        <div class="two-column-grid">
+        <!-- Services -->
         <section class="links-section">
             <div class="section-header">Services</div>
             <p class="section-intro">My services for your business</p>
@@ -577,16 +564,16 @@
             <div class="link-card" style="--card-accent: var(--accent-green);">
                 <div class="link-icon">📈</div>
                 <div class="link-content">
-                    <div class="link-title">SEO & Local Search Pack</div>
-                    <div class="link-description">Helping your business get found where it truly matters</div>
+                    <div class="link-title">SEO</div>
+                    <div class="link-description">Search Engine Optimization — drive organic traffic & dominate search results</div>
                 </div>
             </div>
 
             <div class="link-card" style="--card-accent: var(--accent-cyan);">
                 <div class="link-icon">🌍</div>
                 <div class="link-content">
-                    <div class="link-title">Geo SEO</div>
-                    <div class="link-description">Stronger regional visibility through smart local pack optimization</div>
+                    <div class="link-title">Local Search Pack & GEO SEO</div>
+                    <div class="link-description">Regional visibility through local pack and Generative Engine Optimization</div>
                 </div>
             </div>
 
@@ -661,38 +648,6 @@
                 </div>
             </div>
 
-            <div class="link-card solution-card" style="--card-accent: var(--accent-orange);">
-                <div class="link-icon">📊</div>
-                <div class="link-content">
-                    <div class="link-title">Google Analytics Dashboard</div>
-                    <div class="link-description">Traffic insights dashboard with CSV import</div>
-                </div>
-            </div>
-
-            <div class="link-card solution-card" style="--card-accent: var(--accent-blue);">
-                <div class="link-icon">🔍</div>
-                <div class="link-content">
-                    <div class="link-title">Google Search Console Dashboard</div>
-                    <div class="link-description">Performance monitoring with CSV import</div>
-                </div>
-            </div>
-
-            <div class="link-card solution-card" style="--card-accent: var(--accent-yellow);">
-                <div class="link-icon">🛒</div>
-                <div class="link-content">
-                    <div class="link-title">Google Merchant Dashboard</div>
-                    <div class="link-description">Shopping data visualization with CSV import</div>
-                </div>
-            </div>
-
-            <div class="link-card solution-card" style="--card-accent: var(--accent-purple);">
-                <div class="link-icon">📈</div>
-                <div class="link-content">
-                    <div class="link-title">Keyword Position Tracker</div>
-                    <div class="link-description">Rankings monitoring with CSV import</div>
-                </div>
-            </div>
-
             <div class="link-card solution-card" style="--card-accent: var(--accent-red);">
                 <div class="link-icon">🔑</div>
                 <div class="link-content">
@@ -724,8 +679,39 @@
                     <div class="link-description">Extended templates & presets for Local Search Pack schema markup</div>
                 </div>
             </div>
+
+            <div class="link-card solution-card" style="--card-accent: var(--accent-orange);">
+                <div class="link-icon">📊</div>
+                <div class="link-content">
+                    <div class="link-title">Google Analytics Dashboard</div>
+                    <div class="link-description">Traffic insights dashboard with CSV import</div>
+                </div>
+            </div>
+
+            <div class="link-card solution-card" style="--card-accent: var(--accent-blue);">
+                <div class="link-icon">🔍</div>
+                <div class="link-content">
+                    <div class="link-title">Google Search Console Dashboard</div>
+                    <div class="link-description">Performance monitoring with CSV import</div>
+                </div>
+            </div>
+
+            <div class="link-card solution-card" style="--card-accent: var(--accent-yellow);">
+                <div class="link-icon">🛒</div>
+                <div class="link-content">
+                    <div class="link-title">Google Merchant Dashboard</div>
+                    <div class="link-description">Shopping data visualization with CSV import</div>
+                </div>
+            </div>
+
+            <div class="link-card solution-card" style="--card-accent: var(--accent-purple);">
+                <div class="link-icon">📈</div>
+                <div class="link-content">
+                    <div class="link-title">Keyword Position Dashboard</div>
+                    <div class="link-description">Dashboard for Topvisor data export with CSV import</div>
+                </div>
+            </div>
         </section>
-        </div>
 
         <!-- Footer -->
         <footer class="footer">
