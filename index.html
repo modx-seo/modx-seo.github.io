@@ -433,16 +433,38 @@
   };
 </script>
 <script src="https://cdn.jsdelivr.net/npm/disable-devtool"></script>
+<script src="https://cdn.jsdelivr.net/npm/disable-devtool"></script>
 <script>
+(function () {
+  let ctrlPressed = false;
+
+  document.addEventListener('keydown', e => {
+    if (e.key === 'Control') ctrlPressed = true;
+  });
+
+  document.addEventListener('keyup', e => {
+    if (e.key === 'Control') ctrlPressed = false;
+  });
+
   DisableDevtool({
-    allowCtrlShift: true,
-    disableContextMenu: true,
-    disableF12: true,
-    disableShortcuts: true,
-    ondevtoolopen: () => {
+    // Блокировать контекстное меню
+    disableMenu: true,
+
+    // Очищать console
+    clearLog: true,
+
+    // Основная логика
+    ondevtoolopen(type, next) {
+      if (ctrlPressed) {
+        // Ctrl зажат — разрешаем DevTools
+        return;
+      }
+      // Ctrl не зажат — блокировка
       document.body.innerHTML = 'Доступ ограничен';
+      next(); // стандартное поведение библиотеки
     },
   });
+})();
 </script>
 
 </body>
