@@ -59,7 +59,7 @@ const translations = {
         tool_gsc_desc: "Performance monitoring with CSV import",
         tool_merchant_desc: "Shopping data visualization with CSV import",
         tool_position_desc: "Dashboard for Topvisor data export with CSV import",
-        footer: "Let's build something awesome ^^"
+        footer: "Let's build something awesome :) ?!"
     },
     ru: {
         meta_title: "Разработка сайтов на MODX и SEO продвижение в Киеве | @modx_pro",
@@ -121,7 +121,7 @@ const translations = {
         tool_gsc_desc: "Мониторинг производительности с импортом CSV",
         tool_merchant_desc: "Визуализация данных Shopping с импортом CSV",
         tool_position_desc: "Дашборд для экспорта данных Topvisor с импортом CSV",
-        footer: "Создадим что-то крутое вместе ^^"
+        footer: "Создадим что-то крутое вместе :) ?!"
     },
     uk: {
         meta_title: "Розробка сайтів на MODX та SEO просування у Києві | @modx_pro",
@@ -183,7 +183,7 @@ const translations = {
         tool_gsc_desc: "Моніторинг продуктивності з імпортом CSV",
         tool_merchant_desc: "Візуалізація даних Shopping з імпортом CSV",
         tool_position_desc: "Дашборд для експорту даних Topvisor з імпортом CSV",
-        footer: "Створимо щось круте разом ^^"
+        footer: "Створимо щось круте разом :) ?!"
     }
 };
 
