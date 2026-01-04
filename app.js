@@ -187,7 +187,28 @@ const translations = {
     }
 };
 
-let currentLang = localStorage.getItem('lang') || 'en';
+let currentLang = localStorage.getItem('lang') || detectBrowserLanguage();
+
+// Detect browser language and return supported language code
+function detectBrowserLanguage() {
+    const browserLang = navigator.language || navigator.userLanguage;
+    const langCode = browserLang.split('-')[0].toLowerCase();
+    
+    // Map browser language to supported languages
+    const supportedLangs = ['en', 'ru', 'uk'];
+    
+    if (supportedLangs.includes(langCode)) {
+        return langCode;
+    }
+    
+    // Ukrainian variations
+    if (langCode === 'ua') {
+        return 'uk';
+    }
+    
+    // Default to English
+    return 'en';
+}
 
 const langNames = {
     en: 'EN',
