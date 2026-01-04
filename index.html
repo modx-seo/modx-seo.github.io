@@ -427,44 +427,43 @@
 
 <script src="app.js"></script>
 
-<script>
-  window.onbeforeprint = function () {
-    document.body.innerHTML = '---';
-  };
-</script>
-<script src="https://cdn.jsdelivr.net/npm/disable-devtool"></script>
 <script src="https://cdn.jsdelivr.net/npm/disable-devtool"></script>
 <script>
 (function () {
   let ctrlPressed = false;
 
   document.addEventListener('keydown', e => {
-    if (e.key === 'Control') ctrlPressed = true;
+    if (e.ctrlKey || e.key === 'Control') {
+      ctrlPressed = true;
+    }
   });
 
   document.addEventListener('keyup', e => {
-    if (e.key === 'Control') ctrlPressed = false;
+    if (e.key === 'Control') {
+      ctrlPressed = false;
+    }
   });
 
   DisableDevtool({
-    // Блокировать контекстное меню
     disableMenu: true,
-
-    // Очищать console
     clearLog: true,
-
-    // Основная логика
-    ondevtoolopen(type, next) {
+    
+    ondevtoolopen(type) {
       if (ctrlPressed) {
-        // Ctrl зажат — разрешаем DevTools
         return;
       }
-      // Ctrl не зажат — блокировка
-      document.body.innerHTML = 'Доступ ограничен';
-      next(); // стандартное поведение библиотеки
-    },
+
+      document.body.innerHTML = '<div style="display: flex; align-items: center; justify-content: center; height: 100vh; font-family: Arial, sans-serif; color: #666;">Доступ ограничен</div>';
+      
+    }
   });
 })();
+</script>
+
+<script>
+  window.onbeforeprint = function () {
+    document.body.innerHTML = '';
+  };
 </script>
 
 </body>
