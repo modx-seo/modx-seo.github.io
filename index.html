@@ -328,92 +328,91 @@
 
         <!-- Ready Solutions -->
         <section class="links-section solutions-section">
-            <div class="section-header collapsible" onclick="toggleSolutions()">
+            <div class="section-header">
                 <span data-i18n="solutions_title">Ready Solutions</span>
-                <svg class="collapse-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"></polyline></svg>
             </div>
-            <div class="solutions-content collapsed">
             <p class="section-intro" data-i18n="solutions_intro">My own tools and personal development projects</p>
 
-            <div class="link-card solution-card" style="--card-accent: var(--accent-cyan);">
-                <div class="link-icon">🌍</div>
-                <div class="link-content">
-                    <div class="link-title">MODX CultureKey Generator</div>
-                    <div class="link-description" data-i18n="tool_culture_desc">Multilingual routing generator with CSV import</div>
+            <div class="solutions-grid">
+                <div class="solution-card-new">
+                    <div class="solution-card-header">
+                        <span class="solution-emoji">🌍</span>
+                        <span class="solution-title">CultureKey Generator</span>
+                    </div>
+                    <p class="solution-desc" data-i18n="tool_culture_desc">Multilingual routing generator with CSV import</p>
                 </div>
-            </div>
 
-            <div class="link-card solution-card" style="--card-accent: var(--accent-green);">
-                <div class="link-icon">🔄</div>
-                <div class="link-content">
-                    <div class="link-title">MODX Redirects Generator</div>
-                    <div class="link-description" data-i18n="tool_redirects_desc">Bulk 301 redirects from CSV import</div>
+                <div class="solution-card-new">
+                    <div class="solution-card-header">
+                        <span class="solution-emoji">🔄</span>
+                        <span class="solution-title">Redirects Generator</span>
+                    </div>
+                    <p class="solution-desc" data-i18n="tool_redirects_desc">Bulk 301 redirects from CSV import</p>
                 </div>
-            </div>
 
-            <div class="link-card solution-card" style="--card-accent: var(--accent-red);">
-                <div class="link-icon">🔑</div>
-                <div class="link-content">
-                    <div class="link-title">MODX SEO Keywords Generator</div>
-                    <div class="link-description" data-i18n="tool_keywords_desc">Auto-generate keywords sorted by page frequency for schema markup</div>
+                <div class="solution-card-new">
+                    <div class="solution-card-header">
+                        <span class="solution-emoji">🔑</span>
+                        <span class="solution-title">Keywords Generator</span>
+                    </div>
+                    <p class="solution-desc" data-i18n="tool_keywords_desc">Auto-generate keywords sorted by page frequency for schema markup</p>
                 </div>
-            </div>
 
-            <div class="link-card solution-card" style="--card-accent: var(--accent-green);">
-                <div class="link-icon">⚡</div>
-                <div class="link-content">
-                    <div class="link-title">MODX CacheOptimizer Plugin</div>
-                    <div class="link-description" data-i18n="tool_cache_desc">HTTP caching headers for browsers/CDN + asset versioning (CSS, JS, images)</div>
+                <div class="solution-card-new">
+                    <div class="solution-card-header">
+                        <span class="solution-emoji">⚡</span>
+                        <span class="solution-title">CacheOptimizer</span>
+                    </div>
+                    <p class="solution-desc" data-i18n="tool_cache_desc">HTTP caching headers for browsers/CDN + asset versioning (CSS, JS, images)</p>
                 </div>
-            </div>
 
-            <div class="link-card solution-card" style="--card-accent: var(--accent-blue);">
-                <div class="link-icon">🔧</div>
-                <div class="link-content">
-                    <div class="link-title" data-i18n="tool_snippets_title">MODX Custom Snippets & Plugins</div>
-                    <div class="link-description" data-i18n="tool_snippets_desc">Custom solutions to improve site performance and workflow automation in MODX CMF</div>
+                <div class="solution-card-new">
+                    <div class="solution-card-header">
+                        <span class="solution-emoji">🔧</span>
+                        <span class="solution-title" data-i18n="tool_snippets_title">Snippets & Plugins</span>
+                    </div>
+                    <p class="solution-desc" data-i18n="tool_snippets_desc">Custom solutions to improve site performance and workflow automation in MODX CMF</p>
                 </div>
-            </div>
 
-            <div class="link-card solution-card" style="--card-accent: var(--accent-pink);">
-                <div class="link-icon">🏷️</div>
-                <div class="link-content">
-                    <div class="link-title" data-i18n="tool_ldjson_title">LD-JSON Templates</div>
-                    <div class="link-description" data-i18n="tool_ldjson_desc">Extended templates & presets for Local Search Pack schema markup</div>
+                <div class="solution-card-new">
+                    <div class="solution-card-header">
+                        <span class="solution-emoji">🏷️</span>
+                        <span class="solution-title" data-i18n="tool_ldjson_title">LD-JSON Templates</span>
+                    </div>
+                    <p class="solution-desc" data-i18n="tool_ldjson_desc">Extended templates & presets for Local Search Pack schema markup</p>
                 </div>
-            </div>
 
-            <div class="link-card solution-card" style="--card-accent: var(--accent-orange);">
-                <div class="link-icon">📊</div>
-                <div class="link-content">
-                    <div class="link-title">Google Analytics Dashboard</div>
-                    <div class="link-description" data-i18n="tool_ga_desc">Traffic insights dashboard with CSV import</div>
+                <div class="solution-card-new">
+                    <div class="solution-card-header">
+                        <span class="solution-emoji">📊</span>
+                        <span class="solution-title">GA Dashboard</span>
+                    </div>
+                    <p class="solution-desc" data-i18n="tool_ga_desc">Traffic insights dashboard with CSV import</p>
                 </div>
-            </div>
 
-            <div class="link-card solution-card" style="--card-accent: var(--accent-blue);">
-                <div class="link-icon">🔍</div>
-                <div class="link-content">
-                    <div class="link-title">Google Search Console Dashboard</div>
-                    <div class="link-description" data-i18n="tool_gsc_desc">Performance monitoring with CSV import</div>
+                <div class="solution-card-new">
+                    <div class="solution-card-header">
+                        <span class="solution-emoji">🔍</span>
+                        <span class="solution-title">GSC Dashboard</span>
+                    </div>
+                    <p class="solution-desc" data-i18n="tool_gsc_desc">Performance monitoring with CSV import</p>
                 </div>
-            </div>
 
-            <div class="link-card solution-card" style="--card-accent: var(--accent-yellow);">
-                <div class="link-icon">🛒</div>
-                <div class="link-content">
-                    <div class="link-title">Google Merchant Dashboard</div>
-                    <div class="link-description" data-i18n="tool_merchant_desc">Shopping data visualization with CSV import</div>
+                <div class="solution-card-new">
+                    <div class="solution-card-header">
+                        <span class="solution-emoji">🛒</span>
+                        <span class="solution-title">Merchant Dashboard</span>
+                    </div>
+                    <p class="solution-desc" data-i18n="tool_merchant_desc">Shopping data visualization with CSV import</p>
                 </div>
-            </div>
 
-            <div class="link-card solution-card" style="--card-accent: var(--accent-purple);">
-                <div class="link-icon">📈</div>
-                <div class="link-content">
-                    <div class="link-title">Keyword Position Dashboard</div>
-                    <div class="link-description" data-i18n="tool_position_desc">Dashboard for Topvisor data export with CSV import</div>
+                <div class="solution-card-new">
+                    <div class="solution-card-header">
+                        <span class="solution-emoji">📈</span>
+                        <span class="solution-title">Position Tracker</span>
+                    </div>
+                    <p class="solution-desc" data-i18n="tool_position_desc">Dashboard for Topvisor data export with CSV import</p>
                 </div>
-            </div>
             </div>
         </section>
 

@@ -270,15 +270,6 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 });
 
-// Toggle Ready Solutions
-function toggleSolutions() {
-    const header = document.querySelector('.section-header.collapsible');
-    const content = document.querySelector('.solutions-content');
-    
-    header.classList.toggle('active');
-    content.classList.toggle('collapsed');
-}
-
 // Theme Switcher
 function toggleTheme() {
     const currentTheme = document.documentElement.getAttribute('data-theme');
