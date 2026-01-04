@@ -1,0 +1,1512 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <title>MODX Web Development & SEO Services | @modx_pro</title>
+    <meta name="description" content="Professional MODX CMF website development and SEO services. 15+ years of experience, 50+ successful projects. Web development, local SEO, multilingual sites, Google optimization.">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/devicon.min.css">
+    <style>
+        :root {
+            --bg-primary: #ffffff;
+            --bg-secondary: #f6f8fa;
+            --bg-tertiary: #eef1f4;
+            --border-default: #d1d9e0;
+            --border-muted: #e1e4e8;
+            --text-primary: #1f2328;
+            --text-secondary: #59636e;
+            --text-muted: #8c959f;
+            --accent-green: #1a7f37;
+            --accent-blue: #0969da;
+            --accent-purple: #8250df;
+            --accent-orange: #bf8700;
+            --accent-red: #d1242f;
+            --accent-pink: #bf3989;
+            --accent-cyan: #0891b2;
+            --accent-yellow: #9a6700;
+            --shadow-sm: 0 1px 2px rgba(31, 35, 40, 0.04);
+            --shadow-md: 0 3px 6px rgba(31, 35, 40, 0.08);
+        }
+
+        [data-theme="dark"] {
+            --bg-primary: #0d1117;
+            --bg-secondary: #010409;
+            --bg-tertiary: #161b22;
+            --border-default: #30363d;
+            --border-muted: #21262d;
+            --text-primary: #e6edf3;
+            --text-secondary: #8d96a0;
+            --text-muted: #636c76;
+            --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.2);
+            --shadow-md: 0 3px 6px rgba(0, 0, 0, 0.3);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            background: var(--bg-secondary);
+            color: var(--text-primary);
+            min-height: 100vh;
+            line-height: 1.5;
+            -webkit-font-smoothing: antialiased;
+            transition: background-color 0.3s ease, color 0.3s ease;
+        }
+
+        .container {
+            max-width: 720px;
+            margin: 0 auto;
+            padding: 48px 24px;
+            position: relative;
+        }
+
+        /* Switchers Container */
+        .switchers-container {
+            position: absolute;
+            top: 16px;
+            right: 16px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            z-index: 100;
+        }
+
+        /* Language Switcher */
+        .lang-switcher {
+            position: relative;
+        }
+
+        .lang-current {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            background: var(--bg-primary);
+            border: 1px solid var(--border-muted);
+            border-radius: 8px;
+            padding: 0 12px;
+            height: 40px;
+            font-size: 12px;
+            font-weight: 600;
+            color: var(--text-primary);
+            cursor: pointer;
+            transition: all 0.2s ease;
+            letter-spacing: 0.3px;
+            min-width: 70px;
+            justify-content: space-between;
+        }
+
+        .lang-current:hover {
+            background: var(--bg-tertiary);
+            border-color: var(--border-default);
+        }
+
+        .lang-arrow {
+            width: 14px;
+            height: 14px;
+            color: var(--text-muted);
+            transition: transform 0.2s ease;
+        }
+
+        .lang-switcher.open .lang-arrow {
+            transform: rotate(180deg);
+        }
+
+        .lang-dropdown {
+            position: absolute;
+            top: calc(100% + 4px);
+            right: 0;
+            background: var(--bg-primary);
+            border: 1px solid var(--border-muted);
+            border-radius: 8px;
+            padding: 4px;
+            min-width: 100px;
+            box-shadow: var(--shadow-md), 0 0 0 1px rgba(0, 0, 0, 0.05);
+            opacity: 0;
+            visibility: hidden;
+            transform: translateY(-8px);
+            transition: all 0.2s ease;
+        }
+
+        .lang-switcher.open .lang-dropdown {
+            opacity: 1;
+            visibility: visible;
+            transform: translateY(0);
+        }
+
+        .lang-btn {
+            display: block;
+            width: 100%;
+            background: transparent;
+            border: none;
+            padding: 8px 12px;
+            border-radius: 6px;
+            font-size: 12px;
+            font-weight: 600;
+            color: var(--text-secondary);
+            cursor: pointer;
+            transition: all 0.2s ease;
+            letter-spacing: 0.3px;
+            text-align: left;
+        }
+
+        .lang-btn:hover {
+            color: var(--text-primary);
+            background: var(--bg-tertiary);
+        }
+
+        .lang-btn.active {
+            color: var(--bg-primary);
+            background: var(--accent-blue);
+        }
+
+        /* Theme Switcher */
+        .theme-switcher {
+            background: var(--bg-primary);
+            border: 1px solid var(--border-muted);
+            border-radius: 8px;
+            padding: 0;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.2s ease;
+            width: 40px;
+            height: 40px;
+        }
+
+        .theme-switcher:hover {
+            background: var(--bg-tertiary);
+            border-color: var(--border-default);
+            transform: translateY(-1px);
+        }
+
+        .theme-icon {
+            width: 18px;
+            height: 18px;
+            color: var(--text-muted);
+            transition: all 0.3s ease;
+            fill: none;
+        }
+
+        /* Light bulb OFF state (light theme) */
+        [data-theme="light"] .theme-icon,
+        :root:not([data-theme]) .theme-icon {
+            color: var(--text-muted);
+            fill: none;
+        }
+
+        [data-theme="light"] .theme-switcher:hover .theme-icon,
+        :root:not([data-theme]) .theme-switcher:hover .theme-icon {
+            color: var(--text-secondary);
+        }
+
+        /* Light bulb ON state (dark theme) */
+        [data-theme="dark"] .theme-icon {
+            color: #fbbf24;
+            fill: #fef3c7;
+            filter: drop-shadow(0 0 4px rgba(251, 191, 36, 0.4));
+        }
+
+        [data-theme="dark"] .theme-switcher:hover .theme-icon {
+            color: #f59e0b;
+            fill: #fef3c7;
+            filter: drop-shadow(0 0 6px rgba(251, 191, 36, 0.6));
+        }
+
+        /* Header */
+        .profile {
+            text-align: center;
+            margin-bottom: 32px;
+            animation: fadeIn 0.6s ease-out;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(-10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .profile-logo {
+            width: 120px;
+            height: 120px;
+            margin: 0 auto 24px;
+            position: relative;
+        }
+
+        .profile-logo::before {
+            content: '';
+            position: absolute;
+            inset: -4px;
+            border-radius: 50%;
+            padding: 4px;
+            background: linear-gradient(135deg, #00d4ff 0%, #1ec9e8 25%, #fd8c00 50%, #ff6b35 75%, #00d4ff 100%);
+            -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+            -webkit-mask-composite: xor;
+            mask-composite: exclude;
+            animation: rotateBorder 3s linear infinite;
+        }
+
+        @keyframes rotateBorder {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        .profile-logo img {
+            width: 100%;
+            height: 100%;
+            border-radius: 50%;
+            object-fit: cover;
+            display: block;
+            position: relative;
+            z-index: 1;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+            transition: transform 0.3s ease;
+        }
+
+        .profile-logo:hover img {
+            transform: scale(1.05);
+        }
+
+        [data-theme="dark"] .profile-logo img {
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4);
+        }
+
+        .username {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            font-size: 28px;
+            font-weight: 700;
+            color: var(--text-primary);
+            margin-bottom: 4px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            letter-spacing: -0.5px;
+        }
+
+        .verified {
+            width: 20px;
+            height: 20px;
+            background: var(--accent-blue);
+            border-radius: 50%;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .verified svg {
+            width: 12px;
+            height: 12px;
+            fill: white;
+        }
+
+        .bio {
+            font-size: 14px;
+            color: var(--text-secondary);
+            margin-bottom: 16px;
+        }
+
+        .stats {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 12px 20px;
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            font-size: 12px;
+            color: var(--text-muted);
+        }
+
+        .stat {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        .stat-icon {
+            width: 16px;
+            height: 16px;
+            opacity: 0.7;
+        }
+
+        /* About Section */
+        .about-wrapper {
+            margin-top: 40px;
+        }
+
+        .about-section {
+            background: var(--bg-primary);
+            border: 1px solid var(--border-muted);
+            border-radius: 12px;
+            padding: 24px;
+            margin: 16px 0 0 0;
+        }
+
+        .about-section p {
+            font-size: 14px;
+            color: var(--text-secondary);
+            line-height: 1.6;
+            margin-bottom: 12px;
+        }
+
+        .about-section p:last-child {
+            margin-bottom: 0;
+        }
+
+        .about-highlight {
+            color: var(--text-primary) !important;
+            font-weight: 600;
+        }
+
+        /* Experience Stats */
+        .experience-section {
+            margin: 28px 0;
+            animation: fadeIn 0.6s ease-out 0.3s backwards;
+        }
+
+        .experience-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 16px;
+        }
+
+        .experience-item {
+            background: linear-gradient(135deg, var(--bg-primary) 0%, var(--bg-secondary) 100%);
+            border: 1px solid var(--border-muted);
+            border-radius: 12px;
+            padding: 24px 16px;
+            text-align: center;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .experience-item::before {
+            content: '';
+            position: absolute;
+            top: -20px;
+            right: -20px;
+            width: 120px;
+            height: 120px;
+            opacity: 0.04;
+            transition: all 0.4s ease;
+        }
+
+        .experience-item:nth-child(1)::before {
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" fill="%230969da"><path d="M8 4.754a3.246 3.246 0 1 0 0 6.492 3.246 3.246 0 0 0 0-6.492zM5.754 8a2.246 2.246 0 1 1 4.492 0 2.246 2.246 0 0 1-4.492 0z"/><path d="M9.796 1.343c-.527-1.79-3.065-1.79-3.592 0l-.094.319a.873.873 0 0 1-1.255.52l-.292-.16c-1.64-.892-3.433.902-2.54 2.541l.159.292a.873.873 0 0 1-.52 1.255l-.319.094c-1.79.527-1.79 3.065 0 3.592l.319.094a.873.873 0 0 1 .52 1.255l-.16.292c-.892 1.64.901 3.434 2.541 2.54l.292-.159a.873.873 0 0 1 1.255.52l.094.319c.527 1.79 3.065 1.79 3.592 0l.094-.319a.873.873 0 0 1 1.255-.52l.292.16c1.64.893 3.434-.902 2.54-2.541l-.159-.292a.873.873 0 0 1 .52-1.255l.319-.094c1.79-.527 1.79-3.065 0-3.592l-.319-.094a.873.873 0 0 1-.52-1.255l.16-.292c.893-1.64-.902-3.433-2.541-2.54l-.292.159a.873.873 0 0 1-1.255-.52l-.094-.319z"/></svg>') no-repeat center;
+            background-size: contain;
+        }
+
+        .experience-item:nth-child(2)::before {
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" fill="%230969da"><path d="M7.657 6.247c.11-.33.576-.33.686 0l.645 1.937a2.89 2.89 0 0 0 1.828 1.828l1.937.645c.33.11.33.576 0 .686l-1.937.645a2.89 2.89 0 0 0-1.828 1.828l-.645 1.937a.361.361 0 0 1-.686 0l-.645-1.937a2.89 2.89 0 0 0-1.828-1.828l-1.937-.645a.361.361 0 0 1 0-.686l1.937-.645a2.89 2.89 0 0 0 1.828-1.828l.645-1.937zM3.794 1.148a.217.217 0 0 1 .412 0l.387 1.162c.173.518.579.924 1.097 1.097l1.162.387a.217.217 0 0 1 0 .412l-1.162.387A1.734 1.734 0 0 0 4.593 5.69l-.387 1.162a.217.217 0 0 1-.412 0L3.407 5.69a1.734 1.734 0 0 0-1.097-1.097l-1.162-.387a.217.217 0 0 1 0-.412l1.162-.387A1.734 1.734 0 0 0 3.407 2.31l.387-1.162zM10.863.099a.145.145 0 0 1 .274 0l.258.774c.115.346.386.617.732.732l.774.258a.145.145 0 0 1 0 .274l-.774.258a1.156 1.156 0 0 0-.732.732l-.258.774a.145.145 0 0 1-.274 0l-.258-.774a1.156 1.156 0 0 0-.732-.732L9.1 2.137a.145.145 0 0 1 0-.274l.774-.258c.346-.115.617-.386.732-.732L10.863.1z"/></svg>') no-repeat center;
+            background-size: contain;
+        }
+
+        .experience-item:nth-child(3)::before {
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="%230969da"><path d="M12 0L1.608 6v12L12 24l10.392-6V6L12 0zm-1.5 17.52l-4.5-2.6V9.08l4.5 2.6v5.84zm.75-7.02L6.75 7.9 12 5.3l5.25 2.6-5.25 2.6h-.75zm6 4.42l-4.5 2.6v-5.84l4.5-2.6v5.84z"/></svg>') no-repeat center;
+            background-size: contain;
+        }
+
+        .experience-item:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 8px 16px rgba(31, 35, 40, 0.12);
+            border-color: var(--accent-blue);
+        }
+
+        .experience-item:hover::before {
+            opacity: 0.08;
+            transform: scale(1.1) rotate(5deg);
+        }
+
+        .experience-icon {
+            width: 32px;
+            height: 32px;
+            color: var(--accent-blue);
+            margin-bottom: 16px;
+            opacity: 0.9;
+            filter: drop-shadow(0 2px 4px rgba(9, 105, 218, 0.1));
+        }
+
+        .experience-number {
+            display: block;
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            font-size: 40px;
+            font-weight: 700;
+            background: linear-gradient(135deg, var(--accent-blue) 0%, var(--accent-purple) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            line-height: 1;
+            margin-bottom: 8px;
+        }
+
+        .experience-label {
+            display: block;
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            font-size: 12px;
+            font-weight: 500;
+            color: var(--text-secondary);
+            text-transform: uppercase;
+            letter-spacing: 0.3px;
+            line-height: 1.4;
+        }
+
+        @media (max-width: 480px) {
+            .experience-grid {
+                gap: 10px;
+            }
+            
+            .experience-item {
+                padding: 18px 10px;
+            }
+
+            .experience-number {
+                font-size: 28px;
+            }
+
+            .experience-label {
+                font-size: 9px;
+            }
+        }
+
+        /* Links Section */
+        .links-section {
+            margin-top: 40px;
+        }
+
+        /* Tech Stack */
+        .tech-section {
+            margin-top: 28px;
+        }
+
+        .tech-grid {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 12px;
+            justify-content: center;
+        }
+
+        .tech-item {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            background: var(--bg-primary);
+            border: 1px solid var(--border-muted);
+            border-radius: 8px;
+            padding: 10px 16px;
+            transition: all 0.2s ease;
+        }
+
+        .tech-item:hover {
+            border-color: var(--border-default);
+            box-shadow: var(--shadow-sm);
+            transform: translateY(-1px);
+        }
+
+        .tech-icon {
+            width: 20px;
+            height: 20px;
+            flex-shrink: 0;
+        }
+
+        .tech-name {
+            font-size: 13px;
+            font-weight: 500;
+            color: var(--text-secondary);
+        }
+
+        .tech-icon-font {
+            font-size: 20px;
+            width: 20px;
+            height: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .tech-icon-img {
+            width: 20px;
+            height: 20px;
+            flex-shrink: 0;
+        }
+
+        .section-header {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            font-size: 11px;
+            font-weight: 600;
+            color: var(--text-muted);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 12px;
+            padding-left: 4px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .section-header::after {
+            content: '';
+            flex: 1;
+            height: 1px;
+            background: var(--border-muted);
+        }
+
+        .section-intro {
+            font-size: 13px;
+            color: var(--text-muted);
+            margin-bottom: 16px;
+            padding-left: 4px;
+            font-style: italic;
+        }
+
+        /* Collapsible section */
+        .section-header.collapsible {
+            cursor: pointer;
+            user-select: none;
+            transition: color 0.2s ease;
+        }
+
+        .section-header.collapsible:hover {
+            color: var(--accent-blue);
+        }
+
+        .section-header.collapsible::after {
+            display: none;
+        }
+
+        .collapse-icon {
+            transition: transform 0.3s ease;
+            color: var(--text-muted);
+        }
+
+        .section-header.collapsible.active .collapse-icon {
+            transform: rotate(180deg);
+        }
+
+        .solutions-content {
+            overflow: hidden;
+            transition: max-height 0.4s ease, opacity 0.3s ease;
+            max-height: 2000px;
+            opacity: 1;
+        }
+
+        .solutions-content.collapsed {
+            max-height: 0;
+            opacity: 0;
+        }
+
+        /* Link Cards */
+        .link-card {
+            background: var(--bg-primary);
+            border: 1px solid var(--border-muted);
+            border-radius: 10px;
+            padding: 16px;
+            margin-bottom: 8px;
+            display: flex;
+            align-items: center;
+            gap: 14px;
+            text-decoration: none;
+            color: inherit;
+            transition: all 0.2s ease;
+            position: relative;
+            overflow: hidden;
+            animation: cardReveal 0.4s ease-out backwards;
+        }
+
+        .link-card:nth-child(1) { animation-delay: 0.05s; }
+        .link-card:nth-child(2) { animation-delay: 0.1s; }
+        .link-card:nth-child(3) { animation-delay: 0.15s; }
+        .link-card:nth-child(4) { animation-delay: 0.2s; }
+        .link-card:nth-child(5) { animation-delay: 0.25s; }
+        .link-card:nth-child(6) { animation-delay: 0.3s; }
+        .link-card:nth-child(7) { animation-delay: 0.35s; }
+        .link-card:nth-child(8) { animation-delay: 0.4s; }
+        .link-card:nth-child(9) { animation-delay: 0.45s; }
+        .link-card:nth-child(10) { animation-delay: 0.5s; }
+
+        @keyframes cardReveal {
+            from { 
+                opacity: 0; 
+                transform: translateY(10px); 
+            }
+            to { 
+                opacity: 1; 
+                transform: translateY(0); 
+            }
+        }
+
+        .link-card:hover {
+            border-color: var(--border-default);
+            box-shadow: var(--shadow-md);
+            transform: translateY(-2px);
+        }
+
+        .link-card::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 0;
+            bottom: 0;
+            width: 3px;
+            background: var(--card-accent, var(--accent-green));
+            opacity: 0;
+            transition: opacity 0.2s ease;
+        }
+
+        .link-card:hover::before {
+            opacity: 1;
+        }
+
+        .link-icon {
+            width: 40px;
+            height: 40px;
+            border-radius: 10px;
+            background: var(--bg-secondary);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+            font-size: 20px;
+            border: 1px solid var(--border-muted);
+        }
+
+        .link-content {
+            flex: 1;
+            min-width: 0;
+        }
+
+        .link-title {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            font-size: 15px;
+            font-weight: 600;
+            color: var(--text-primary);
+            margin-bottom: 4px;
+        }
+
+        .link-description {
+            font-size: 13px;
+            color: var(--text-secondary);
+            line-height: 1.4;
+        }
+
+        .link-arrow {
+            color: var(--text-muted);
+            opacity: 0;
+            transform: translateX(-4px);
+            transition: all 0.2s ease;
+            flex-shrink: 0;
+            align-self: center;
+        }
+
+        .link-card:hover .link-arrow {
+            opacity: 1;
+            transform: translateX(0);
+        }
+
+        /* Telegram CTA */
+        .telegram-cta {
+            background: linear-gradient(135deg, #229ED9 0%, #1a8bc7 100%);
+            border: none;
+            margin-top: 24px;
+            margin-bottom: 8px;
+            box-shadow: 0 4px 12px rgba(34, 158, 217, 0.3);
+        }
+
+        .telegram-cta:hover {
+            box-shadow: 0 6px 20px rgba(34, 158, 217, 0.4);
+        }
+
+        .telegram-cta::before {
+            display: none;
+        }
+
+        .telegram-cta .link-icon {
+            background: rgba(255,255,255,0.2);
+            border: none;
+        }
+
+        .telegram-cta .link-title {
+            color: white;
+        }
+
+        .telegram-cta .link-description {
+            color: rgba(255,255,255,0.9);
+        }
+
+        .telegram-cta .link-arrow {
+            color: white;
+        }
+
+        /* Footer */
+        .footer {
+            margin-top: 40px;
+            padding-top: 24px;
+            border-top: 1px solid var(--border-muted);
+            text-align: center;
+            animation: fadeIn 0.6s ease-out 0.5s backwards;
+        }
+
+        .footer-text {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            font-size: 13px;
+            color: var(--text-muted);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+        }
+
+        .pulse-dot {
+            width: 8px;
+            height: 8px;
+            background: var(--accent-green);
+            border-radius: 50%;
+            animation: pulse 2s ease-in-out infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% { opacity: 1; transform: scale(1); }
+            50% { opacity: 0.5; transform: scale(0.9); }
+        }
+
+        /* Responsive */
+        @media (max-width: 480px) {
+            .container {
+                padding: 32px 16px;
+                padding-top: 56px;
+            }
+
+            .lang-switcher {
+                top: 12px;
+                right: 12px;
+            }
+
+            .username {
+                font-size: 24px;
+            }
+
+            .link-card {
+                padding: 14px;
+            }
+
+            .link-icon {
+                width: 36px;
+                height: 36px;
+                font-size: 18px;
+            }
+
+            .link-title {
+                font-size: 14px;
+            }
+
+            .link-description {
+                font-size: 12px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- Switchers -->
+        <div class="switchers-container">
+            <!-- Language Switcher -->
+            <div class="lang-switcher">
+                <button class="lang-current" onclick="toggleLangDropdown()">
+                    <span class="lang-text">EN</span>
+                    <svg class="lang-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <polyline points="6 9 12 15 18 9"></polyline>
+                    </svg>
+                </button>
+                <div class="lang-dropdown">
+                    <button class="lang-btn active" data-lang="en">English</button>
+                    <button class="lang-btn" data-lang="ru">Русский</button>
+                    <button class="lang-btn" data-lang="uk">Українська</button>
+                </div>
+            </div>
+
+            <!-- Theme Switcher -->
+            <button class="theme-switcher" onclick="toggleTheme()" aria-label="Toggle theme">
+                <svg class="theme-icon light-bulb" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M9 18h6"></path>
+                    <path d="M10 22h4"></path>
+                    <path d="M12 3a6 6 0 0 0-6 6c0 2.5 1.5 4.5 3 6v1a2 2 0 0 0 2 2h2a2 2 0 0 0 2-2v-1c1.5-1.5 3-3.5 3-6a6 6 0 0 0-6-6Z"></path>
+                </svg>
+            </button>
+        </div>
+
+        <!-- Profile Header -->
+        <header class="profile">
+            <div class="profile-logo">
+                <img src="modx.jpg" alt="MODX Logo">
+            </div>
+            <h1 class="username">
+                @modx_pro
+                <span class="verified">
+                    <svg viewBox="0 0 24 24"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg>
+                </span>
+            </h1>
+            <p class="bio" data-i18n="bio">Web Development & SEO on MODX CMF</p>
+            <div class="stats">
+                <span class="stat">
+                    <svg class="stat-icon" viewBox="0 0 16 16" fill="currentColor"><path d="M7.657 6.247c.11-.33.576-.33.686 0l.645 1.937a2.89 2.89 0 0 0 1.828 1.828l1.937.645c.33.11.33.576 0 .686l-1.937.645a2.89 2.89 0 0 0-1.828 1.828l-.645 1.937a.361.361 0 0 1-.686 0l-.645-1.937a2.89 2.89 0 0 0-1.828-1.828l-1.937-.645a.361.361 0 0 1 0-.686l1.937-.645a2.89 2.89 0 0 0 1.828-1.828l.645-1.937zM3.794 1.148a.217.217 0 0 1 .412 0l.387 1.162c.173.518.579.924 1.097 1.097l1.162.387a.217.217 0 0 1 0 .412l-1.162.387A1.734 1.734 0 0 0 4.593 5.69l-.387 1.162a.217.217 0 0 1-.412 0L3.407 5.69a1.734 1.734 0 0 0-1.097-1.097l-1.162-.387a.217.217 0 0 1 0-.412l1.162-.387A1.734 1.734 0 0 0 3.407 2.31l.387-1.162zM10.863.099a.145.145 0 0 1 .274 0l.258.774c.115.346.386.617.732.732l.774.258a.145.145 0 0 1 0 .274l-.774.258a1.156 1.156 0 0 0-.732.732l-.258.774a.145.145 0 0 1-.274 0l-.258-.774a1.156 1.156 0 0 0-.732-.732L9.1 2.137a.145.145 0 0 1 0-.274l.774-.258c.346-.115.617-.386.732-.732L10.863.1z"/></svg>
+                    <span data-i18n="stat_seo">Senior SEO</span>
+                </span>
+                <span class="stat">
+                    <svg class="stat-icon" viewBox="0 0 16 16" fill="currentColor"><path d="M10.478 1.647a.5.5 0 1 0-.956-.294l-4 13a.5.5 0 0 0 .956.294l4-13zM4.854 4.146a.5.5 0 0 1 0 .708L1.707 8l3.147 3.146a.5.5 0 0 1-.708.708l-3.5-3.5a.5.5 0 0 1 0-.708l3.5-3.5a.5.5 0 0 1 .708 0zm6.292 0a.5.5 0 0 0 0 .708L14.293 8l-3.147 3.146a.5.5 0 0 0 .708.708l3.5-3.5a.5.5 0 0 0 0-.708l-3.5-3.5a.5.5 0 0 0-.708 0z"/></svg>
+                    <span data-i18n="stat_dev">MODX Developer</span>
+                </span>
+                <span class="stat">
+                    <svg class="stat-icon" viewBox="0 0 16 16" fill="currentColor"><path d="M8 16s6-5.686 6-10A6 6 0 0 0 2 6c0 4.314 6 10 6 10zm0-7a3 3 0 1 1 0-6 3 3 0 0 1 0 6z"/></svg>
+                    <span data-i18n="stat_local">Local SEO</span>
+                </span>
+                <span class="stat">
+                    <svg class="stat-icon" viewBox="0 0 16 16" fill="currentColor"><path d="M15.545 6.558a9.42 9.42 0 0 1 .139 1.626c0 2.434-.87 4.492-2.384 5.885h.002C11.978 15.292 10.158 16 8 16A8 8 0 1 1 8 0a7.689 7.689 0 0 1 5.352 2.082l-2.284 2.284A4.347 4.347 0 0 0 8 3.166c-2.087 0-3.86 1.408-4.492 3.304a4.792 4.792 0 0 0 0 3.063h.003c.635 1.893 2.405 3.301 4.492 3.301 1.078 0 2.004-.276 2.722-.764h-.003a3.702 3.702 0 0 0 1.599-2.431H8v-3.08h7.545z"/></svg>
+                    <span data-i18n="stat_google">Google Expert</span>
+                </span>
+            </div>
+        </header>
+
+        <div class="header-section">
+        <!-- Telegram CTA -->
+        <a href="https://t.me/modx_pro" target="_blank" rel="noopener" class="link-card telegram-cta">
+            <div class="link-icon">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="white"><path d="M11.944 0A12 12 0 0 0 0 12a12 12 0 0 0 12 12 12 12 0 0 0 12-12A12 12 0 0 0 12 0a12 12 0 0 0-.056 0zm4.962 7.224c.1-.002.321.023.465.14a.506.506 0 0 1 .171.325c.016.093.036.306.02.472-.18 1.898-.962 6.502-1.36 8.627-.168.9-.499 1.201-.82 1.23-.696.065-1.225-.46-1.9-.902-1.056-.693-1.653-1.124-2.678-1.8-1.185-.78-.417-1.21.258-1.91.177-.184 3.247-2.977 3.307-3.23.007-.032.014-.15-.056-.212s-.174-.041-.249-.024c-.106.024-1.793 1.14-5.061 3.345-.48.33-.913.49-1.302.48-.428-.008-1.252-.241-1.865-.44-.752-.245-1.349-.374-1.297-.789.027-.216.325-.437.893-.663 3.498-1.524 5.83-2.529 6.998-3.014 3.332-1.386 4.025-1.627 4.476-1.635z"/></svg>
+            </div>
+            <div class="link-content">
+                <div class="link-title" data-i18n="tg_title">Contact on Telegram</div>
+                <div class="link-description" data-i18n="tg_desc">@modx_pro - Let's discuss your project</div>
+            </div>
+            <span class="link-arrow">→</span>
+        </a>
+
+        <!-- Experience Stats -->
+        <section class="experience-section">
+            <div class="section-header" data-i18n="experience_title">Experience</div>
+            <p class="section-intro" data-i18n="experience_intro">My professional journey</p>
+            
+            <div class="experience-grid">
+                <div class="experience-item">
+                    <svg class="experience-icon" viewBox="0 0 16 16" fill="currentColor"><path d="M8 4.754a3.246 3.246 0 1 0 0 6.492 3.246 3.246 0 0 0 0-6.492zM5.754 8a2.246 2.246 0 1 1 4.492 0 2.246 2.246 0 0 1-4.492 0z"/><path d="M9.796 1.343c-.527-1.79-3.065-1.79-3.592 0l-.094.319a.873.873 0 0 1-1.255.52l-.292-.16c-1.64-.892-3.433.902-2.54 2.541l.159.292a.873.873 0 0 1-.52 1.255l-.319.094c-1.79.527-1.79 3.065 0 3.592l.319.094a.873.873 0 0 1 .52 1.255l-.16.292c-.892 1.64.901 3.434 2.541 2.54l.292-.159a.873.873 0 0 1 1.255.52l.094.319c.527 1.79 3.065 1.79 3.592 0l.094-.319a.873.873 0 0 1 1.255-.52l.292.16c1.64.893 3.434-.902 2.54-2.541l-.159-.292a.873.873 0 0 1 .52-1.255l.319-.094c1.79-.527 1.79-3.065 0-3.592l-.319-.094a.873.873 0 0 1-.52-1.255l.16-.292c.893-1.64-.902-3.433-2.541-2.54l-.292.159a.873.873 0 0 1-1.255-.52l-.094-.319zm-2.633.283c.246-.835 1.428-.835 1.674 0l.094.319a1.873 1.873 0 0 0 2.693 1.115l.291-.16c.764-.415 1.6.42 1.184 1.185l-.159.292a1.873 1.873 0 0 0 1.116 2.692l.318.094c.835.246.835 1.428 0 1.674l-.319.094a1.873 1.873 0 0 0-1.115 2.693l.16.291c.415.764-.42 1.6-1.185 1.184l-.291-.159a1.873 1.873 0 0 0-2.693 1.116l-.094.318c-.246.835-1.428.835-1.674 0l-.094-.319a1.873 1.873 0 0 0-2.692-1.115l-.292.16c-.764.415-1.6-.42-1.184-1.185l.159-.291A1.873 1.873 0 0 0 1.945 8.93l-.319-.094c-.835-.246-.835-1.428 0-1.674l.319-.094A1.873 1.873 0 0 0 3.06 4.377l-.16-.292c-.415-.764.42-1.6 1.185-1.184l.292.159a1.873 1.873 0 0 0 2.692-1.115l.094-.319z"/></svg>
+                    <span class="experience-number">21+</span>
+                    <span class="experience-label" data-i18n="exp_webdev">years in Web Dev</span>
+                </div>
+                <div class="experience-item">
+                    <svg class="experience-icon" viewBox="0 0 16 16" fill="currentColor"><path d="M7.657 6.247c.11-.33.576-.33.686 0l.645 1.937a2.89 2.89 0 0 0 1.828 1.828l1.937.645c.33.11.33.576 0 .686l-1.937.645a2.89 2.89 0 0 0-1.828 1.828l-.645 1.937a.361.361 0 0 1-.686 0l-.645-1.937a2.89 2.89 0 0 0-1.828-1.828l-1.937-.645a.361.361 0 0 1 0-.686l1.937-.645a2.89 2.89 0 0 0 1.828-1.828l.645-1.937zM3.794 1.148a.217.217 0 0 1 .412 0l.387 1.162c.173.518.579.924 1.097 1.097l1.162.387a.217.217 0 0 1 0 .412l-1.162.387A1.734 1.734 0 0 0 4.593 5.69l-.387 1.162a.217.217 0 0 1-.412 0L3.407 5.69a1.734 1.734 0 0 0-1.097-1.097l-1.162-.387a.217.217 0 0 1 0-.412l1.162-.387A1.734 1.734 0 0 0 3.407 2.31l.387-1.162zM10.863.099a.145.145 0 0 1 .274 0l.258.774c.115.346.386.617.732.732l.774.258a.145.145 0 0 1 0 .274l-.774.258a1.156 1.156 0 0 0-.732.732l-.258.774a.145.145 0 0 1-.274 0l-.258-.774a1.156 1.156 0 0 0-.732-.732L9.1 2.137a.145.145 0 0 1 0-.274l.774-.258c.346-.115.617-.386.732-.732L10.863.1z"/></svg>
+                    <span class="experience-number">19+</span>
+                    <span class="experience-label" data-i18n="exp_seo">years in SEO</span>
+                </div>
+                <div class="experience-item">
+                    <svg class="experience-icon" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0L1.608 6v12L12 24l10.392-6V6L12 0zm-1.5 17.52l-4.5-2.6V9.08l4.5 2.6v5.84zm.75-7.02L6.75 7.9 12 5.3l5.25 2.6-5.25 2.6h-.75zm6 4.42l-4.5 2.6v-5.84l4.5-2.6v5.84z"/></svg>
+                    <span class="experience-number">15+</span>
+                    <span class="experience-label" data-i18n="exp_modx">years with MODX</span>
+                </div>
+            </div>
+        </section>
+
+        <!-- About -->
+        <section class="about-wrapper">
+            <div class="section-header" data-i18n="about_title">About Me</div>
+            <p class="section-intro" data-i18n="about_intro">Who I am and what I do</p>
+            
+            <div class="about-section">
+                <p data-i18n="about_1">IT degree with 19+ years in SEO - from the very beginning of search optimization. I develop, optimize, and promote websites on MODX Revolution (v2-v3).</p>
+                <p data-i18n="about_2">Full cycle SEO:<br>• On-Page: content, keywords, meta tags, headings, URLs, internal linking, images<br>• Off-Page: link building, local SEO, online listings, drop domains (finding relevant expired domains, link weight transfer, backlink profile recovery)<br>• Technical: site speed, mobile-friendliness, structured data, XML sitemaps</p>
+                <p data-i18n="about_3">Full cycle Web Development:<br>• Planning: requirements analysis, market research, architecture, competitor research, prototyping<br>• Development: MODX CMF setup, custom templates, responsive design, multilingual support<br>• Optimization: speed tuning, SEO-ready structure, security hardening<br>• Launch & Support: testing, deployment, ongoing maintenance</p>
+                <p data-i18n="about_5">I don't work with these niches: escort, adult content, psychics, drugs, gambling, pyramid schemes. I don't work with CMS: WordPress, Joomla, Drupal, Bitrix, OpenCart, Tilda, Wix.</p>
+                <p class="about-highlight" data-i18n="about_4">Working with me is like finding a great dentist - once you do, you don't switch.</p>
+            </div>
+        </section>
+        </div>
+
+        <!-- Services -->
+        <section class="links-section">
+            <div class="section-header" data-i18n="services_title">Services</div>
+            <p class="section-intro" data-i18n="services_intro">My services for your business</p>
+
+            <div class="link-card" style="--card-accent: var(--accent-blue);">
+                <div class="link-icon">💻</div>
+                <div class="link-content">
+                    <div class="link-title" data-i18n="srv_web_title">Web Development</div>
+                    <div class="link-description" data-i18n="srv_web_desc">Fast, flexible MODX websites with multilingual support (EN, RU, UK)</div>
+                </div>
+            </div>
+
+            <div class="link-card" style="--card-accent: var(--accent-orange);">
+                <div class="link-icon">🔗</div>
+                <div class="link-content">
+                    <div class="link-title" data-i18n="srv_drop_title">Drop Domains & Recovery</div>
+                    <div class="link-description" data-i18n="srv_drop_desc">Expired domains, SEO weight transfer, Google penalty removal & diagnostics</div>
+                </div>
+            </div>
+
+            <div class="link-card" style="--card-accent: var(--accent-green);">
+                <div class="link-icon">📈</div>
+                <div class="link-content">
+                    <div class="link-title" data-i18n="srv_seo_title">SEO</div>
+                    <div class="link-description" data-i18n="srv_seo_desc">Search Engine Optimization - drive organic traffic & dominate search results</div>
+                </div>
+            </div>
+
+            <div class="link-card" style="--card-accent: var(--accent-cyan);">
+                <div class="link-icon">🌍</div>
+                <div class="link-content">
+                    <div class="link-title" data-i18n="srv_local_title">Local Search Pack & GEO SEO</div>
+                    <div class="link-description" data-i18n="srv_local_desc">Regional visibility through local pack and Generative Engine Optimization</div>
+                </div>
+            </div>
+
+            <div class="link-card" style="--card-accent: var(--accent-pink);">
+                <div class="link-icon">🤖</div>
+                <div class="link-content">
+                    <div class="link-title" data-i18n="srv_llmo_title">LLMO</div>
+                    <div class="link-description" data-i18n="srv_llmo_desc">Preparing your content for AI-driven search and assistants</div>
+                </div>
+            </div>
+
+            <div class="link-card" style="--card-accent: var(--accent-purple);">
+                <div class="link-icon">📱</div>
+                <div class="link-content">
+                    <div class="link-title" data-i18n="srv_mobile_title">Mobile Optimization</div>
+                    <div class="link-description" data-i18n="srv_mobile_desc">Perfect user experience across all screen sizes and devices</div>
+                </div>
+            </div>
+
+            <div class="link-card" style="--card-accent: var(--accent-red);">
+                <div class="link-icon">🔐</div>
+                <div class="link-content">
+                    <div class="link-title" data-i18n="srv_security_title">Security</div>
+                    <div class="link-description" data-i18n="srv_security_desc">Protecting your website, data and users</div>
+                </div>
+            </div>
+
+            <div class="link-card" style="--card-accent: var(--accent-orange);">
+                <div class="link-icon">🛒</div>
+                <div class="link-content">
+                    <div class="link-title" data-i18n="srv_merchant_title">Google Merchant & Shopping Ads</div>
+                    <div class="link-description" data-i18n="srv_merchant_desc">Boosting the performance and reach of your online store</div>
+                </div>
+            </div>
+
+            <div class="link-card" style="--card-accent: var(--accent-yellow);">
+                <div class="link-icon">📊</div>
+                <div class="link-content">
+                    <div class="link-title" data-i18n="srv_analytics_title">Analytics & Conversion</div>
+                    <div class="link-description" data-i18n="srv_analytics_desc">Data-driven insights that support growth and measurable results</div>
+                </div>
+            </div>
+
+            <div class="link-card" style="--card-accent: var(--accent-blue);">
+                <div class="link-icon">⚙️</div>
+                <div class="link-content">
+                    <div class="link-title" data-i18n="srv_auto_title">Business Automation</div>
+                    <div class="link-description" data-i18n="srv_auto_desc">Simplifying and optimizing your operational workflows</div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Tech Stack -->
+        <section class="tech-section">
+            <div class="section-header" data-i18n="tech_title">Tech Stack</div>
+            <div class="tech-grid">
+                <div class="tech-item">
+                    <i class="devicon-php-plain colored tech-icon-font"></i>
+                    <span class="tech-name">PHP</span>
+                </div>
+                <div class="tech-item">
+                    <i class="devicon-mysql-plain colored tech-icon-font"></i>
+                    <span class="tech-name">MySQL</span>
+                </div>
+                <div class="tech-item">
+                    <svg class="tech-icon" viewBox="0 0 24 24" fill="#102C53"><path d="M12 0L1.608 6v12L12 24l10.392-6V6L12 0zm-1.5 17.52l-4.5-2.6V9.08l4.5 2.6v5.84zm.75-7.02L6.75 7.9 12 5.3l5.25 2.6-5.25 2.6h-.75zm6 4.42l-4.5 2.6v-5.84l4.5-2.6v5.84z"/></svg>
+                    <span class="tech-name">MODX Revolution</span>
+                </div>
+                <div class="tech-item">
+                    <i class="devicon-html5-plain colored tech-icon-font"></i>
+                    <span class="tech-name">HTML5</span>
+                </div>
+                <div class="tech-item">
+                    <i class="devicon-css3-plain colored tech-icon-font"></i>
+                    <span class="tech-name">CSS3</span>
+                </div>
+                <div class="tech-item">
+                    <i class="devicon-sass-original colored tech-icon-font"></i>
+                    <span class="tech-name">SASS</span>
+                </div>
+                <div class="tech-item">
+                    <i class="devicon-javascript-plain colored tech-icon-font"></i>
+                    <span class="tech-name">JavaScript</span>
+                </div>
+                <div class="tech-item">
+                    <i class="devicon-jquery-plain colored tech-icon-font"></i>
+                    <span class="tech-name">jQuery</span>
+                </div>
+                <div class="tech-item">
+                    <i class="devicon-json-plain colored tech-icon-font"></i>
+                    <span class="tech-name">LD-JSON</span>
+                </div>
+                <div class="tech-item">
+                    <i class="devicon-git-plain colored tech-icon-font"></i>
+                    <span class="tech-name">Git</span>
+                </div>
+                <div class="tech-item">
+                    <i class="devicon-nginx-original colored tech-icon-font"></i>
+                    <span class="tech-name">Nginx</span>
+                </div>
+                <div class="tech-item">
+                    <i class="devicon-apache-plain colored tech-icon-font"></i>
+                    <span class="tech-name">Apache</span>
+                </div>
+                <div class="tech-item">
+                    <i class="devicon-cloudflare-plain colored tech-icon-font"></i>
+                    <span class="tech-name">Cloudflare</span>
+                </div>
+                <div class="tech-item">
+                    <i class="devicon-openapi-plain colored tech-icon-font"></i>
+                    <span class="tech-name">REST API</span>
+                </div>
+            </div>
+        </section>
+
+        <!-- SEO Stack -->
+        <section class="tech-section">
+            <div class="section-header" data-i18n="seo_stack_title">SEO Stack</div>
+            <div class="tech-grid">
+                <div class="tech-item">
+                    <img class="tech-icon-img" src="https://cdn.simpleicons.org/googlesearchconsole/458CF5" alt="Google Search Console">
+                    <span class="tech-name">Google Search Console</span>
+                </div>
+                <div class="tech-item">
+                    <img class="tech-icon-img" src="https://cdn.simpleicons.org/googleanalytics/E37400" alt="Google Analytics">
+                    <span class="tech-name">Google Analytics</span>
+                </div>
+                <div class="tech-item">
+                    <img class="tech-icon-img" src="https://cdn.simpleicons.org/googletagmanager/246FDB" alt="Google Tag Manager">
+                    <span class="tech-name">Google Tag Manager</span>
+                </div>
+                <div class="tech-item">
+                    <img class="tech-icon-img" src="https://cdn.simpleicons.org/googlecloud/4285F4" alt="Google Cloud">
+                    <span class="tech-name">Google Cloud API</span>
+                </div>
+                <div class="tech-item">
+                    <img class="tech-icon-img" src="https://cdn.simpleicons.org/pagespeedinsights/4285F4" alt="PageSpeed Insights">
+                    <span class="tech-name">PageSpeed Insights</span>
+                </div>
+                <div class="tech-item">
+                    <svg class="tech-icon" viewBox="0 0 24 24" fill="#FF6A3D"><path d="M21.1 7.3l-9-5.2c-.3-.2-.7-.2-1 0l-9 5.2c-.3.2-.5.5-.5.9v10.4c0 .4.2.7.5.9l9 5.2c.2.1.3.1.5.1s.3 0 .5-.1l9-5.2c.3-.2.5-.5.5-.9V8.2c0-.4-.2-.7-.5-.9zM12 4.2l7 4-7 4-7-4 7-4zm-8 5.5l7 4v8l-7-4v-8zm9 12v-8l7-4v8l-7 4z"/></svg>
+                    <span class="tech-name">Ahrefs</span>
+                </div>
+                <div class="tech-item">
+                    <svg class="tech-icon" viewBox="0 0 24 24" fill="#FF642D"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8zm-1-13h2v6h-2zm0 8h2v2h-2z"/></svg>
+                    <span class="tech-name">Semrush</span>
+                </div>
+                <div class="tech-item">
+                    <svg class="tech-icon" viewBox="0 0 24 24" fill="#4A90D9"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/></svg>
+                    <span class="tech-name">Moz</span>
+                </div>
+                <div class="tech-item">
+                    <svg class="tech-icon" viewBox="0 0 24 24" fill="#F59E0B"><path d="M15.5 14h-.79l-.28-.27C15.41 12.59 16 11.11 16 9.5 16 5.91 13.09 3 9.5 3S3 5.91 3 9.5 5.91 16 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z"/></svg>
+                    <span class="tech-name">Ubersuggest</span>
+                </div>
+                <div class="tech-item">
+                    <svg class="tech-icon" viewBox="0 0 24 24" fill="#5BA745"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 17.93c-3.95-.49-7-3.85-7-7.93 0-.62.08-1.21.21-1.79L9 15v1c0 1.1.9 2 2 2v1.93zm6.9-2.54c-.26-.81-1-1.39-1.9-1.39h-1v-3c0-.55-.45-1-1-1H8v-2h2c.55 0 1-.45 1-1V7h2c1.1 0 2-.9 2-2v-.41c2.93 1.19 5 4.06 5 7.41 0 2.08-.8 3.97-2.1 5.39z"/></svg>
+                    <span class="tech-name">Screaming Frog SEO</span>
+                </div>
+                <div class="tech-item">
+                    <svg class="tech-icon" viewBox="0 0 24 24" fill="#6366F1"><path d="M12 0C5.373 0 0 5.373 0 12s5.373 12 12 12 12-5.373 12-12S18.627 0 12 0zM6 6h12v2H6V6zm0 4h12v2H6v-2zm0 4h12v2H6v-2zm0 4h8v2H6v-2z"/></svg>
+                    <span class="tech-name">Topvisor</span>
+                </div>
+            </div>
+        </section>
+
+        <!-- Ready Solutions -->
+        <section class="links-section solutions-section">
+            <div class="section-header collapsible" onclick="toggleSolutions()">
+                <span data-i18n="solutions_title">Ready Solutions</span>
+                <svg class="collapse-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"></polyline></svg>
+            </div>
+            <div class="solutions-content collapsed">
+            <p class="section-intro" data-i18n="solutions_intro">My own tools and personal development projects</p>
+
+            <div class="link-card solution-card" style="--card-accent: var(--accent-cyan);">
+                <div class="link-icon">🌍</div>
+                <div class="link-content">
+                    <div class="link-title">MODX CultureKey Generator</div>
+                    <div class="link-description" data-i18n="tool_culture_desc">Multilingual routing generator with CSV import</div>
+                </div>
+            </div>
+
+            <div class="link-card solution-card" style="--card-accent: var(--accent-green);">
+                <div class="link-icon">🔄</div>
+                <div class="link-content">
+                    <div class="link-title">MODX Redirects Generator</div>
+                    <div class="link-description" data-i18n="tool_redirects_desc">Bulk 301 redirects from CSV import</div>
+                </div>
+            </div>
+
+            <div class="link-card solution-card" style="--card-accent: var(--accent-red);">
+                <div class="link-icon">🔑</div>
+                <div class="link-content">
+                    <div class="link-title">MODX SEO Keywords Generator</div>
+                    <div class="link-description" data-i18n="tool_keywords_desc">Auto-generate keywords sorted by page frequency for schema markup</div>
+                </div>
+            </div>
+
+            <div class="link-card solution-card" style="--card-accent: var(--accent-green);">
+                <div class="link-icon">⚡</div>
+                <div class="link-content">
+                    <div class="link-title">MODX CacheOptimizer Plugin</div>
+                    <div class="link-description" data-i18n="tool_cache_desc">HTTP caching headers for browsers/CDN + asset versioning (CSS, JS, images)</div>
+                </div>
+            </div>
+
+            <div class="link-card solution-card" style="--card-accent: var(--accent-blue);">
+                <div class="link-icon">🔧</div>
+                <div class="link-content">
+                    <div class="link-title" data-i18n="tool_snippets_title">MODX Custom Snippets & Plugins</div>
+                    <div class="link-description" data-i18n="tool_snippets_desc">Custom solutions to improve site performance and workflow automation in MODX CMF</div>
+                </div>
+            </div>
+
+            <div class="link-card solution-card" style="--card-accent: var(--accent-pink);">
+                <div class="link-icon">🏷️</div>
+                <div class="link-content">
+                    <div class="link-title" data-i18n="tool_ldjson_title">LD-JSON Templates</div>
+                    <div class="link-description" data-i18n="tool_ldjson_desc">Extended templates & presets for Local Search Pack schema markup</div>
+                </div>
+            </div>
+
+            <div class="link-card solution-card" style="--card-accent: var(--accent-orange);">
+                <div class="link-icon">📊</div>
+                <div class="link-content">
+                    <div class="link-title">Google Analytics Dashboard</div>
+                    <div class="link-description" data-i18n="tool_ga_desc">Traffic insights dashboard with CSV import</div>
+                </div>
+            </div>
+
+            <div class="link-card solution-card" style="--card-accent: var(--accent-blue);">
+                <div class="link-icon">🔍</div>
+                <div class="link-content">
+                    <div class="link-title">Google Search Console Dashboard</div>
+                    <div class="link-description" data-i18n="tool_gsc_desc">Performance monitoring with CSV import</div>
+                </div>
+            </div>
+
+            <div class="link-card solution-card" style="--card-accent: var(--accent-yellow);">
+                <div class="link-icon">🛒</div>
+                <div class="link-content">
+                    <div class="link-title">Google Merchant Dashboard</div>
+                    <div class="link-description" data-i18n="tool_merchant_desc">Shopping data visualization with CSV import</div>
+                </div>
+            </div>
+
+            <div class="link-card solution-card" style="--card-accent: var(--accent-purple);">
+                <div class="link-icon">📈</div>
+                <div class="link-content">
+                    <div class="link-title">Keyword Position Dashboard</div>
+                    <div class="link-description" data-i18n="tool_position_desc">Dashboard for Topvisor data export with CSV import</div>
+                </div>
+            </div>
+            </div>
+        </section>
+
+        <!-- Footer -->
+        <footer class="footer">
+            <p class="footer-text">
+                <span class="pulse-dot"></span>
+                <span data-i18n="footer">Let's build something awesome ^^</span>
+            </p>
+        </footer>
+    </div>
+
+<script>
+const translations = {
+    en: {
+        meta_title: "MODX Web Development & SEO Services in Kyiv, Ukraine | @modx_pro",
+        meta_desc: "Professional MODX CMF website development and SEO services in Kyiv, Ukraine. 19+ years in SEO, 15+ years with MODX, 50+ successful projects. Web development, local SEO, Google optimization.",
+        bio: "Web Development & SEO on MODX CMF",
+        stat_seo: "Senior SEO",
+        stat_dev: "MODX Developer",
+        stat_local: "Local SEO",
+        stat_google: "Google Expert",
+        tg_title: "Contact on Telegram",
+        tg_desc: "@modx_pro - Let's discuss your project",
+        about_title: "About Me",
+        about_intro: "Who I am and what I do",
+        about_1: "IT degree with 21+ years in web development, 19+ years in SEO - from the very beginning of search optimization, and 15+ years developing on MODX Revolution. I develop, optimize, and promote websites that dominate search results.",
+        about_2: "<strong>Full cycle SEO:</strong><br>• On-Page: content, keywords, meta tags, headings, URLs, internal linking, images<br>• Off-Page: link building, local SEO, online listings, drop domains (finding relevant expired domains, link weight transfer, backlink profile recovery)<br>• Technical: site speed, mobile-friendliness, structured data, XML sitemaps",
+        about_3: "<strong>Full cycle Web Development:</strong><br>• Planning: requirements analysis, market research, architecture, competitor research, prototyping<br>• Development: MODX CMF setup, custom templates, responsive design, multilingual support<br>• Optimization: speed tuning, SEO-ready structure, security hardening<br>• Launch & Support: testing, deployment, ongoing maintenance",
+        about_4: "Working with me is like finding a great dentist - once you do, you don't switch.",
+        about_5: "<strong>I don't work with these niches:</strong> escort, adult content, psychics, drugs, gambling, pyramid schemes.<br><strong>I don't work with CMS:</strong> WordPress, Joomla, Bitrix, Tilda, Wix and other website builders.",
+        exp_seo: "years in SEO",
+        exp_modx: "years with MODX",
+        exp_webdev: "years in Web Dev",
+        experience_title: "Experience",
+        experience_intro: "My experience in web development and SEO promotion",
+        services_title: "Services",
+        services_intro: "My services for your business",
+        tech_title: "Tech Stack",
+        seo_stack_title: "SEO Stack",
+        srv_web_title: "Web Development",
+        srv_web_desc: "Fast, flexible MODX websites with multilingual support (EN, RU, UK)",
+        srv_drop_title: "Drop Domains & Recovery",
+        srv_drop_desc: "Expired domains, SEO weight transfer, Google penalty removal & diagnostics",
+        srv_seo_title: "SEO",
+        srv_seo_desc: "Search Engine Optimization - drive organic traffic & dominate search results",
+        srv_local_title: "Local Search Pack & GEO SEO",
+        srv_local_desc: "Regional visibility through local pack and Generative Engine Optimization",
+        srv_llmo_title: "LLMO",
+        srv_llmo_desc: "Preparing your content for AI-driven search and assistants",
+        srv_mobile_title: "Mobile Optimization",
+        srv_mobile_desc: "Perfect user experience across all screen sizes and devices",
+        srv_security_title: "Security",
+        srv_security_desc: "Protecting your website, data and users",
+        srv_merchant_title: "Google Merchant & Shopping Ads",
+        srv_merchant_desc: "Boosting the performance and reach of your online store",
+        srv_analytics_title: "Analytics & Conversion",
+        srv_analytics_desc: "Data-driven insights that support growth and measurable results",
+        srv_auto_title: "Business Automation",
+        srv_auto_desc: "Simplifying and optimizing your operational workflows",
+        solutions_title: "Ready Solutions",
+        solutions_intro: "My own tools and personal development projects",
+        tool_culture_desc: "Multilingual routing generator with CSV import",
+        tool_redirects_desc: "Bulk 301 redirects from CSV import",
+        tool_keywords_desc: "Auto-generate keywords sorted by page frequency for schema markup",
+        tool_cache_desc: "HTTP caching headers for browsers/CDN + asset versioning (CSS, JS, images)",
+        tool_snippets_title: "MODX Custom Snippets & Plugins",
+        tool_snippets_desc: "Custom solutions to improve site performance and workflow automation in MODX CMF",
+        tool_ldjson_title: "LD-JSON Templates",
+        tool_ldjson_desc: "Extended templates & presets for Local Search Pack schema markup",
+        tool_ga_desc: "Traffic insights dashboard with CSV import",
+        tool_gsc_desc: "Performance monitoring with CSV import",
+        tool_merchant_desc: "Shopping data visualization with CSV import",
+        tool_position_desc: "Dashboard for Topvisor data export with CSV import",
+        footer: "Let's build something awesome ^^"
+    },
+    ru: {
+        meta_title: "Разработка сайтов на MODX и SEO продвижение в Киеве | @modx_pro",
+        meta_desc: "Профессиональная разработка сайтов на MODX CMF и SEO продвижение в Киеве, Украина. 19+ лет в SEO, 15+ лет с MODX, 50+ успешных проектов. Веб-разработка, локальное SEO, оптимизация под Google.",
+        bio: "Разработка и SEO продвижение сайтов на MODX CMF",
+        stat_seo: "Senior SEO",
+        stat_dev: "MODX разработчик",
+        stat_local: "Локальное SEO",
+        stat_google: "Google эксперт",
+        tg_title: "Написать в Telegram",
+        tg_desc: "@modx_pro - Обсудим ваш проект",
+        about_title: "Обо мне",
+        about_intro: "Кто я и чем занимаюсь",
+        about_1: "Высшее техническое образование в сфере IT, 21+ год в веб-разработке, 19+ лет в SEO - с самого начала зарождения поисковой оптимизации, и 15+ лет разработки на MODX Revolution. Разрабатываю, оптимизирую и продвигаю сайты, которые доминируют в поисковой выдаче.",
+        about_2: "<strong>Полный цикл SEO:</strong><br>• On-Page: контент, ключевые слова, мета-теги, заголовки, URL, внутренняя перелинковка, изображения<br>• Off-Page: линкбилдинг, локальное SEO, каталоги, дроп-домены (поиск релевантных истёкших доменов, перекачка ссылочного веса, восстановление ссылочного профиля)<br>• Technical: скорость сайта, мобильная адаптация, структурированные данные, XML-карты",
+        about_3: "<strong>Полный цикл разработки сайта:</strong><br>• Планирование: анализ требований, анализ рынка, архитектура, исследование конкурентов, прототипирование<br>• Разработка: настройка MODX CMF, кастомные шаблоны, адаптивный дизайн, мультиязычность<br>• Оптимизация: ускорение, SEO-структура, защита безопасности<br>• Запуск и поддержка: тестирование, деплой, техническое сопровождение",
+        about_4: "Работа со мной - как найти хорошего стоматолога: однажды найдёшь - больше не меняешь.",
+        about_5: "<strong>Не работаю с тематиками:</strong> эскорт, контент 18+, гадалки и ворожеи, наркотики, азартные игры, финансовые пирамиды.<br><strong>Не работаю с CMS:</strong> WordPress, Joomla, Bitrix, Tilda, Wix и прочие конструкторы сайтов.",
+        exp_seo: "лет в SEO",
+        exp_modx: "лет с MODX",
+        exp_webdev: "лет в Web Dev",
+        experience_title: "Опыт",
+        experience_intro: "Мой опыт в разработке и SEO продвижении сайтов",
+        services_title: "Услуги",
+        services_intro: "Мои услуги для вашего бизнеса",
+        tech_title: "Технологии",
+        seo_stack_title: "SEO-инструменты",
+        srv_web_title: "Веб-разработка",
+        srv_web_desc: "Быстрые, гибкие сайты на MODX с мультиязычностью (EN, RU, UK)",
+        srv_drop_title: "Дроп-домены и восстановление",
+        srv_drop_desc: "Истёкшие домены, передача SEO-веса, снятие санкций Google и диагностика",
+        srv_seo_title: "SEO",
+        srv_seo_desc: "Поисковая оптимизация - органический трафик и доминирование в выдаче",
+        srv_local_title: "Local Search Pack & GEO SEO",
+        srv_local_desc: "Региональная видимость через локальный пак и генеративную оптимизацию",
+        srv_llmo_title: "LLMO",
+        srv_llmo_desc: "Подготовка контента для AI-поиска и ассистентов",
+        srv_mobile_title: "Мобильная оптимизация",
+        srv_mobile_desc: "Идеальный UX на всех экранах и устройствах",
+        srv_security_title: "Безопасность",
+        srv_security_desc: "Защита сайта, данных и пользователей",
+        srv_merchant_title: "Google Merchant & Shopping Ads",
+        srv_merchant_desc: "Повышение эффективности и охвата интернет-магазина",
+        srv_analytics_title: "Аналитика и конверсии",
+        srv_analytics_desc: "Data-driven инсайты для роста и измеримых результатов",
+        srv_auto_title: "Автоматизация бизнеса",
+        srv_auto_desc: "Упрощение и оптимизация рабочих процессов",
+        solutions_title: "Готовые решения",
+        solutions_intro: "Мои инструменты и персональные разработки",
+        tool_culture_desc: "Генератор мультиязычных маршрутов с импортом CSV",
+        tool_redirects_desc: "Массовые 301 редиректы из CSV",
+        tool_keywords_desc: "Автогенерация ключевых слов по частоте на странице для микроразметки",
+        tool_cache_desc: "HTTP-кэширование для браузеров/CDN + версионирование ассетов (CSS, JS, изображения)",
+        tool_snippets_title: "Кастомные сниппеты и плагины MODX",
+        tool_snippets_desc: "Решения для улучшения производительности и автоматизации в MODX CMF",
+        tool_ldjson_title: "Шаблоны LD-JSON",
+        tool_ldjson_desc: "Расширенные шаблоны и заготовки микроразметки для Local Search Pack",
+        tool_ga_desc: "Дашборд трафика с импортом CSV",
+        tool_gsc_desc: "Мониторинг производительности с импортом CSV",
+        tool_merchant_desc: "Визуализация данных Shopping с импортом CSV",
+        tool_position_desc: "Дашборд для экспорта данных Topvisor с импортом CSV",
+        footer: "Создадим что-то крутое вместе ^^"
+    },
+    uk: {
+        meta_title: "Розробка сайтів на MODX та SEO просування у Києві | @modx_pro",
+        meta_desc: "Професійна розробка сайтів на MODX CMF та SEO просування у Києві, Україна. 19+ років у SEO, 15+ років з MODX, 50+ успішних проектів. Веб-розробка, локальне SEO, оптимізація під Google.",
+        bio: "Розробка та SEO просування сайтів на MODX CMF",
+        stat_seo: "Senior SEO",
+        stat_dev: "MODX розробник",
+        stat_local: "Локальне SEO",
+        stat_google: "Google експерт",
+        tg_title: "Написати в Telegram",
+        tg_desc: "@modx_pro - Обговоримо ваш проект",
+        about_title: "Про мене",
+        about_intro: "Хто я і чим займаюсь",
+        about_1: "Вища технічна освіта в сфері IT, 21+ рік у веб-розробці, 19+ років у SEO - з самого початку зародження пошукової оптимізації, та 15+ років розробки на MODX Revolution. Розробляю, оптимізую та просуваю сайти, які домінують у пошуковій видачі.",
+        about_2: "<strong>Повний цикл SEO:</strong><br>• On-Page: контент, ключові слова, мета-теги, заголовки, URL, внутрішня перелінковка, зображення<br>• Off-Page: лінкбілдинг, локальне SEO, каталоги, дроп-домени (пошук релевантних прострочених доменів, перекачка посилального веса, відновлення посилального профілю)<br>• Technical: швидкість сайту, мобільна адаптація, структуровані дані, XML-карти",
+        about_3: "<strong>Повний цикл розробки сайту:</strong><br>• Планування: аналіз вимог, аналіз ринку, архітектура, дослідження конкурентів, прототипування<br>• Розробка: налаштування MODX CMF, кастомні шаблони, адаптивний дизайн, мультимовність<br>• Оптимізація: прискорення, SEO-структура, захист безпеки<br>• Запуск і підтримка: тестування, деплой, технічне супроводження",
+        about_4: "Робота зі мною - як знайти хорошого стоматолога: одного разу знайдеш - більше не змінюєш.",
+        about_5: "<strong>Не працюю з тематиками:</strong> ескорт, контент 18+, ворожки та гадалки, наркотики, азартні ігри, фінансові піраміди.<br><strong>Не працюю з CMS:</strong> WordPress, Joomla, Bitrix, Tilda, Wix та інші конструктори сайтів.",
+        exp_seo: "років у SEO",
+        exp_modx: "років з MODX",
+        exp_webdev: "років у Web Dev",
+        experience_title: "Досвід",
+        experience_intro: "Мій досвід у розробці та SEO просуванні сайтів",
+        services_title: "Послуги",
+        services_intro: "Мої послуги для вашого бізнесу",
+        tech_title: "Технології",
+        seo_stack_title: "SEO-інструменти",
+        srv_web_title: "Веб-розробка",
+        srv_web_desc: "Швидкі, гнучкі сайти на MODX з мультимовністю (EN, RU, UK)",
+        srv_drop_title: "Дроп-домени та відновлення",
+        srv_drop_desc: "Прострочені домени, передача SEO-ваги, зняття санкцій Google та діагностика",
+        srv_seo_title: "SEO",
+        srv_seo_desc: "Пошукова оптимізація - органічний трафік та домінування у видачі",
+        srv_local_title: "Local Search Pack & GEO SEO",
+        srv_local_desc: "Регіональна видимість через локальний пак та генеративну оптимізацію",
+        srv_llmo_title: "LLMO",
+        srv_llmo_desc: "Підготовка контенту для AI-пошуку та асистентів",
+        srv_mobile_title: "Мобільна оптимізація",
+        srv_mobile_desc: "Ідеальний UX на всіх екранах та пристроях",
+        srv_security_title: "Безпека",
+        srv_security_desc: "Захист сайту, даних та користувачів",
+        srv_merchant_title: "Google Merchant & Shopping Ads",
+        srv_merchant_desc: "Підвищення ефективності та охоплення інтернет-магазину",
+        srv_analytics_title: "Аналітика та конверсії",
+        srv_analytics_desc: "Data-driven інсайти для зростання та вимірюваних результатів",
+        srv_auto_title: "Автоматизація бізнесу",
+        srv_auto_desc: "Спрощення та оптимізація робочих процесів",
+        solutions_title: "Готові рішення",
+        solutions_intro: "Мої інструменти та персональні розробки",
+        tool_culture_desc: "Генератор мультимовних маршрутів з імпортом CSV",
+        tool_redirects_desc: "Масові 301 редиректи з CSV",
+        tool_keywords_desc: "Автогенерація ключових слів за частотою на сторінці для мікророзмітки",
+        tool_cache_desc: "HTTP-кешування для браузерів/CDN + версіонування ассетів (CSS, JS, зображення)",
+        tool_snippets_title: "Кастомні сніпети та плагіни MODX",
+        tool_snippets_desc: "Рішення для покращення продуктивності та автоматизації в MODX CMF",
+        tool_ldjson_title: "Шаблони LD-JSON",
+        tool_ldjson_desc: "Розширені шаблони та заготовки мікророзмітки для Local Search Pack",
+        tool_ga_desc: "Дашборд трафіку з імпортом CSV",
+        tool_gsc_desc: "Моніторинг продуктивності з імпортом CSV",
+        tool_merchant_desc: "Візуалізація даних Shopping з імпортом CSV",
+        tool_position_desc: "Дашборд для експорту даних Topvisor з імпортом CSV",
+        footer: "Створимо щось круте разом ^^"
+    }
+};
+
+let currentLang = localStorage.getItem('lang') || 'en';
+
+const langNames = {
+    en: 'EN',
+    ru: 'RU',
+    uk: 'UK'
+};
+
+function setLanguage(lang) {
+    currentLang = lang;
+    localStorage.setItem('lang', lang);
+    document.documentElement.lang = lang;
+    
+    // Update current language display
+    document.querySelector('.lang-text').textContent = langNames[lang];
+    
+    // Update active button
+    document.querySelectorAll('.lang-btn').forEach(btn => {
+        btn.classList.toggle('active', btn.dataset.lang === lang);
+    });
+    
+    // Update meta tags
+    document.title = translations[lang].meta_title;
+    document.querySelector('meta[name="description"]').setAttribute('content', translations[lang].meta_desc);
+    
+    // Update all translatable elements
+    document.querySelectorAll('[data-i18n]').forEach(el => {
+        const key = el.dataset.i18n;
+        if (translations[lang][key]) {
+            if (key === 'about_2' || key === 'about_3' || key === 'about_5') {
+                el.innerHTML = translations[lang][key];
+            } else {
+                el.textContent = translations[lang][key];
+            }
+        }
+    });
+    
+    // Close dropdown after selection
+    document.querySelector('.lang-switcher').classList.remove('open');
+}
+
+function toggleLangDropdown() {
+    document.querySelector('.lang-switcher').classList.toggle('open');
+}
+
+// Close dropdown when clicking outside
+document.addEventListener('click', (e) => {
+    const langSwitcher = document.querySelector('.lang-switcher');
+    if (langSwitcher && !langSwitcher.contains(e.target)) {
+        langSwitcher.classList.remove('open');
+    }
+});
+
+// Initialize
+document.addEventListener('DOMContentLoaded', () => {
+    setLanguage(currentLang);
+    
+    document.querySelectorAll('.lang-btn').forEach(btn => {
+        btn.addEventListener('click', () => setLanguage(btn.dataset.lang));
+    });
+});
+
+// Toggle Ready Solutions
+function toggleSolutions() {
+    const header = document.querySelector('.section-header.collapsible');
+    const content = document.querySelector('.solutions-content');
+    
+    header.classList.toggle('active');
+    content.classList.toggle('collapsed');
+}
+
+// Theme Switcher
+function toggleTheme() {
+    const currentTheme = document.documentElement.getAttribute('data-theme');
+    const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
+    
+    document.documentElement.setAttribute('data-theme', newTheme);
+    localStorage.setItem('theme', newTheme);
+}
+
+// Initialize theme
+document.addEventListener('DOMContentLoaded', () => {
+    const savedTheme = localStorage.getItem('theme') || 'light';
+    document.documentElement.setAttribute('data-theme', savedTheme);
+});
+</script>
+
+<script>
+  window.onbeforeprint = function () {
+    document.body.innerHTML = '---';
+  };
+</script>
+<script disable-devtool-auto src='https://cdn.jsdelivr.net/npm/disable-devtool@latest'></script>
+</body>
+</html>
