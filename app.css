@@ -819,8 +819,8 @@ body {
 .solution-desc {
     font-size: 11px;
     color: var(--text-muted);
-    line-height: 1.4;
     margin: 0;
+    padding-left: 37px;
 }
 
 @media (max-width: 480px) {
