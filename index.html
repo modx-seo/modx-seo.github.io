@@ -432,6 +432,18 @@
     document.body.innerHTML = '---';
   };
 </script>
+<script src="https://cdn.jsdelivr.net/npm/disable-devtool"></script>
+<script>
+  DisableDevtool({
+    allowCtrlShift: true,
+    disableContextMenu: true,
+    disableF12: true,
+    disableShortcuts: true,
+    ondevtoolopen: () => {
+      document.body.innerHTML = 'Доступ ограничен';
+    },
+  });
+</script>
 
 </body>
 </html>
