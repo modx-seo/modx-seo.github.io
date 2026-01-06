@@ -1,6 +1,6 @@
 const translations = {
     en: {
-        meta_title: "MODX Web Development & SEO Services in Kyiv, Ukraine | @modx_pro",
+        meta_title: "Web Development & SEO on MODX in Kyiv | Ukraine",
         meta_desc: "Professional MODX CMF website development and SEO services in Kyiv, Ukraine. 19+ years in SEO, 15+ years with MODX, 50+ successful projects. Web development, local SEO, Google optimization.",
         bio: "Web Development & SEO on MODX CMF",
         stat_seo: "Senior SEO",
@@ -62,7 +62,7 @@ const translations = {
         footer: "Let's build something awesome ?!"
     },
     ru: {
-        meta_title: "Разработка сайтов на MODX и SEO продвижение в Киеве | @modx_pro",
+        meta_title: "Разработка и SEO продвижение сайтов на MODX в Киеве | Украина",
         meta_desc: "Профессиональная разработка сайтов на MODX CMF и SEO продвижение в Киеве, Украина. 19+ лет в SEO, 15+ лет с MODX, 50+ успешных проектов. Веб-разработка, локальное SEO, оптимизация под Google.",
         bio: "Разработка и SEO продвижение сайтов на MODX CMF",
         stat_seo: "Senior SEO",
@@ -124,7 +124,7 @@ const translations = {
         footer: "Создадим что-то крутое вместе ?!"
     },
     uk: {
-        meta_title: "Розробка сайтів на MODX та SEO просування у Києві | @modx_pro",
+        meta_title: "Розробка сайтів та SEO просування на MODX у Києві | Україна",
         meta_desc: "Професійна розробка сайтів на MODX CMF та SEO просування у Києві, Україна. 19+ років у SEO, 15+ років з MODX, 50+ успішних проектів. Веб-розробка, локальне SEO, оптимізація під Google.",
         bio: "Розробка та SEO просування сайтів на MODX CMF",
         stat_seo: "Senior SEO",
