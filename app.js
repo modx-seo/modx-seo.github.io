@@ -55,9 +55,9 @@ const translations = {
         tool_snippets_desc: "Custom solutions to improve site performance and workflow automation in MODX CMF",
         tool_ldjson_title: "LD-JSON Templates",
         tool_ldjson_desc: "Extended templates & presets for Local Search Pack schema markup",
-        tool_ga_desc: "Traffic insights dashboard with CSV import",
-        tool_gsc_desc: "Performance monitoring with CSV import",
-        tool_merchant_desc: "Shopping data visualization with CSV import",
+        tool_ga_desc: "Traffic sources dashboard with daily charts and CSV import",
+        tool_gsc_desc: "Extended traffic dashboard with charts + pages + queries + countries + devices with CSV import",
+        tool_merchant_desc: "Google Merchant data dashboard with charts and CSV import",
         tool_position_desc: "Dashboard for Topvisor data export with CSV import",
         footer: "Let's build something awesome ?!"
     },
@@ -117,9 +117,9 @@ const translations = {
         tool_snippets_desc: "Решения для улучшения производительности и автоматизации в MODX CMF",
         tool_ldjson_title: "Шаблоны LD-JSON",
         tool_ldjson_desc: "Расширенные шаблоны и заготовки микроразметки для Local Search Pack",
-        tool_ga_desc: "Дашборд трафика с импортом CSV",
-        tool_gsc_desc: "Мониторинг производительности с импортом CSV",
-        tool_merchant_desc: "Визуализация данных Shopping с импортом CSV",
+        tool_ga_desc: "Дашборд источников трафика с графиками по дням и импортом CSV",
+        tool_gsc_desc: "Расширенный дашборд трафика с графиками + страницы + запросы + страны + устройства с импортом CSV",
+        tool_merchant_desc: "Дашборд данных Google Merchant с графиками и импортом CSV",
         tool_position_desc: "Дашборд для экспорта данных Topvisor с импортом CSV",
         footer: "Создадим что-то крутое вместе ?!"
     },
@@ -179,9 +179,9 @@ const translations = {
         tool_snippets_desc: "Рішення для покращення продуктивності та автоматизації в MODX CMF",
         tool_ldjson_title: "Шаблони LD-JSON",
         tool_ldjson_desc: "Розширені шаблони та заготовки мікророзмітки для Local Search Pack",
-        tool_ga_desc: "Дашборд трафіку з імпортом CSV",
-        tool_gsc_desc: "Моніторинг продуктивності з імпортом CSV",
-        tool_merchant_desc: "Візуалізація даних Shopping з імпортом CSV",
+        tool_ga_desc: "Дашборд джерел трафіку з графіками по днях та імпортом CSV",
+        tool_gsc_desc: "Розширений дашборд трафіку з графіками + сторінки + запити + країни + пристрої з імпортом CSV",
+        tool_merchant_desc: "Дашборд даних Google Merchant з графіками та імпортом CSV",
         tool_position_desc: "Дашборд для експорту даних Topvisor з імпортом CSV",
         footer: "Створимо щось круте разом ?!"
     }
